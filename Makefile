@@ -1831,7 +1831,7 @@ $(OBJ_DIR)/main.o: ./main.cpp ./catch2/catch.hpp \
 
 report: $(EXECUTABLE)
 	$(EXECUTABLE)  > /dev/null
-	lcov -t "report" -d Build/ -c -o "report.info"
+	gcov  "report" -d Build/ -c -o "report.info"
 	genhtml -o report report.info
 
 clean:
