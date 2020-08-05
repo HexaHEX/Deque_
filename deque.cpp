@@ -4,50 +4,41 @@ Deque::Deque()
     : _size(0)
 {
     _begin = this->_CreateNode(0);
-    if ( _begin )
-    {
+    if ( _begin ){
         _end = this->_CreateNode(0);
-        if ( _end == nullptr )
-        {
+        if ( _end == nullptr ){
             delete _begin;
             _begin = nullptr;
             throw DequeException(1, "Can not create node.");
         }
     }
-    else
-    {
+    else{
         throw DequeException(1, "Can not create node.");
     }
 }
 
-Deque::~Deque()
-{
+Deque::~Deque(){
     this->Clear();
     this->_DeleteNode(this->_begin);
     this->_DeleteNode(this->_end);
 }
 
-bool Deque::Empty()
-{
+bool Deque::Empty(){
     return this->_size == 0;
 }
 
-unsigned int Deque::Length()
-{
+unsigned int Deque::Length(){
     return this->_size;
 }
 
-void Deque::PushBack(int value)
-{
-    if (this->Empty())
-    {
+void Deque::PushBack(int value){
+    if (this->Empty()){
         this->_AddFirstNode(value);
         return;
     }
 
     Node * node = this->_CreateNode(value);
-    if ( node == nullptr )
-    {
+    if ( node == nullptr ){
         throw DequeException(1, "Can not create node.");
     }
 
@@ -60,17 +51,14 @@ void Deque::PushBack(int value)
 
 }
 
-void Deque::PushFront(int value)
-{
-    if (this->Empty())
-    {
+void Deque::PushFront(int value){
+    if (this->Empty()){
         this->_AddFirstNode(value);
         return;
     }
 
     Node * node = this->_CreateNode(value);
-    if ( node == nullptr )
-    {
+    if ( node == nullptr ){
         throw DequeException(1, "Can not create node.");
     }
 
@@ -81,15 +69,12 @@ void Deque::PushFront(int value)
     this->_size++;
 }
 
-int Deque::PopBack()
-{
-    if (this->Length() == 0)
-    {
+int Deque::PopBack(){
+    if (this->Length() == 0){
         throw DequeException(5, "Delete Item from Empty Deque");
     }
 
-    if (this->Length() == 1)
-    {
+    if (this->Length() == 1){
         return this->_PopLastItem();
     }
 
@@ -103,20 +88,16 @@ int Deque::PopBack()
     return value;
 }
 
-int Deque::PopFront()
-{
-    if (this->Length() == 0)
-    {
+int Deque::PopFront(){
+    if (this->Length() == 0){
         throw DequeException(5, "Delete Item from Empty Deque");
     }
 
-    if (this->Length() == 1)
-    {
+    if (this->Length() == 1){
         return this->_PopLastItem();
     }
 
-    if ( this->_begin->next  == nullptr )
-    {
+    if ( this->_begin->next  == nullptr ){
         throw DequeException(2, "Can not pop not existen item.");
     }
 
@@ -131,15 +112,13 @@ int Deque::PopFront()
     return value;
 }
 
-void Deque::Clear()
-{
+void Deque::Clear(){
     while (this->_size != 0)
         this->PopFront();
 }
 
 
-Deque::DequeIterator Deque::begin()
-{
+Deque::DequeIterator Deque::begin(){
     if (this->Empty())
         throw DequeException(13, "Empty Deque, Iterator not Exist");
 
@@ -147,8 +126,7 @@ Deque::DequeIterator Deque::begin()
     return it;
 }
 
-Deque::DequeIterator Deque::end()
-{
+Deque::DequeIterator Deque::end(){
     if (this->Empty())
         throw DequeException(13, "Empty Deque, Iterator not Exist");
 
@@ -156,11 +134,9 @@ Deque::DequeIterator Deque::end()
     return it;
 }
 
-Deque::DequeIterator Deque::LeftFindItem(int value)
-{
+Deque::DequeIterator Deque::LeftFindItem(int value){
     DequeIterator it = this->begin();
-    for(; it != this->end(); it++)
-    {
+    for(; it != this->end(); it++){
         if (*it == value)
             return it;
     }
@@ -168,32 +144,26 @@ Deque::DequeIterator Deque::LeftFindItem(int value)
 }
 
 
-Deque::DequeIterator Deque::RightFindItem(int value)
-{
+Deque::DequeIterator Deque::RightFindItem(int value){
     DequeIterator it = this->end()--;
-    for(; it != this->begin(); it--)
-    {
+    for(; it != this->begin(); it--){
         if (*it == value)
             return it;
     }
     return it;
 }
 
-void Deque::LeftRemoveItem(Deque::DequeIterator find)
-{
-    if (find == this->begin())
-    {
+void Deque::LeftRemoveItem(Deque::DequeIterator find){
+    if (find == this->begin()){
         this->PopFront();
         return;
     }
 
-    if (find == this->end())
-    {
+    if (find == this->end()) {
         return;
     }
 
-    if (find == this->end()--)
-    {
+    if (find == this->end()--) {
         this->PopBack();
         return;
     }
@@ -206,23 +176,19 @@ void Deque::LeftRemoveItem(Deque::DequeIterator find)
     this->_DeleteNode(find._ptr);
 }
 
-void Deque::InsertItem(DequeIterator insert, int value)
-{
-    if (insert == this->begin())
-    {
+void Deque::InsertItem(DequeIterator insert, int value){
+    if (insert == this->begin()) {
         this->PushFront(value);
         return;
     }
 
-    if (insert == this->end()--)
-    {
+    if (insert == this->end()--){
         this->PushBack(value);
         return;
     }
 
     Node* node = this->_CreateNode(value);
-    if ( node == nullptr )
-    {
+    if ( node == nullptr ){
         throw DequeException(1, "Can not create node.");
     }
 
@@ -235,11 +201,9 @@ void Deque::InsertItem(DequeIterator insert, int value)
     this->_size++;
 }
 
-Node* Deque::_CreateNode(int value)
-{
+Node* Deque::_CreateNode(int value){
     Node* node = new Node();
-    if ( node )
-    {
+    if ( node ) {
         node->value = value;
         node->next = nullptr;
         node->prev = nullptr;
@@ -248,10 +212,8 @@ Node* Deque::_CreateNode(int value)
     return node;
 }
 
-void Deque::_DeleteNode(Node* node)
-{
-    if ( node )
-    {
+void Deque::_DeleteNode(Node* node){
+    if ( node ){
         node->next = nullptr;
         node->prev = nullptr;
         delete node;
@@ -259,11 +221,9 @@ void Deque::_DeleteNode(Node* node)
     }
 }
 
-void Deque::_AddFirstNode(int value)
-{
+void Deque::_AddFirstNode(int value){
     Node * node = _CreateNode(value);
-    if ( node == nullptr )
-    {
+    if ( node == nullptr ){
         throw DequeException(1, "Can not create node.");
     }
 
@@ -274,10 +234,8 @@ void Deque::_AddFirstNode(int value)
     this->_size++;
 }
 
-int Deque::_PopLastItem()
-{
-    if ( _begin->next == nullptr )
-    {
+int Deque::_PopLastItem(){
+    if ( _begin->next == nullptr ){
         throw DequeException(10, "Empty Deque, Iterator not Exist");
     }
     Node* node = this->_begin->next;
@@ -294,36 +252,30 @@ int Deque::_PopLastItem()
 //____DequeIterator__________________
 
 Deque::DequeIterator::DequeIterator(Node* node):
-_ptr(node)
-{
+_ptr(node){
 
 }
 
-Deque::DequeIterator::~DequeIterator()
-{
+Deque::DequeIterator::~DequeIterator(){
     this->_ptr = nullptr;
 }
 
-const int& Deque::DequeIterator::operator*() const
-{
+const int& Deque::DequeIterator::operator*() const{
     if (this->_ptr->next == nullptr)
         throw DequeException(31, "Empty Iterator");
 
     return this->_ptr->value;
 }
 
-bool Deque::DequeIterator::operator== (const DequeIterator& it) const
-{
+bool Deque::DequeIterator::operator== (const DequeIterator& it) const{
     return this->_ptr == it._ptr;
 }
 
-bool Deque::DequeIterator::operator!= (const DequeIterator& it) const
-{
+bool Deque::DequeIterator::operator!= (const DequeIterator& it) const{
     return !(*this == it);
 }
 
-Deque::DequeIterator& Deque::DequeIterator::operator++()
-{
+Deque::DequeIterator& Deque::DequeIterator::operator++(){
     if (this->_ptr->next == nullptr)
         throw DequeException(33, "It is Last Iterator");
 
@@ -331,8 +283,7 @@ Deque::DequeIterator& Deque::DequeIterator::operator++()
     return *this;
 }
 
-Deque::DequeIterator Deque::DequeIterator::operator++(int)
-{
+Deque::DequeIterator Deque::DequeIterator::operator++(int){
     if (this->_ptr->next == nullptr)
         throw DequeException(33, "It is Last Iterator");
 
@@ -340,8 +291,7 @@ Deque::DequeIterator Deque::DequeIterator::operator++(int)
     return *this;
 }
 
-Deque::DequeIterator& Deque::DequeIterator::operator--()
-{
+Deque::DequeIterator& Deque::DequeIterator::operator--(){
     if (this->_ptr->prev == nullptr)
         throw DequeException(35, "It is First Iterator");
 
@@ -349,8 +299,7 @@ Deque::DequeIterator& Deque::DequeIterator::operator--()
     return *this;
 }
 
-Deque::DequeIterator Deque::DequeIterator::operator--(int)
-{
+Deque::DequeIterator Deque::DequeIterator::operator--(int){
     if (this->_ptr->prev == nullptr)
         throw DequeException(35, "It is First Iterator");
 
