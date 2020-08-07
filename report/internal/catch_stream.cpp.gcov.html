@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -156,11 +156,11 @@
 <span class="lineNum">      94 </span>            :         public:
 <a name="95"><span class="lineNum">      95 </span>            :             // Store the streambuf from cout up-front because</a>
 <a name="96"><span class="lineNum">      96 </span>            :             // cout may get redirected when running tests</a>
-<span class="lineNum">      97 </span><span class="lineCov">          3 :             CoutStream() : m_os( Catch::cout().rdbuf() ) {}</span>
-<span class="lineNum">      98 </span><span class="lineCov">          6 :             ~CoutStream() override = default;</span>
+<span class="lineNum">      97 </span><span class="lineCov">         24 :             CoutStream() : m_os( Catch::cout().rdbuf() ) {}</span>
+<span class="lineNum">      98 </span><span class="lineCov">         48 :             ~CoutStream() override = default;</span>
 <a name="99"><span class="lineNum">      99 </span>            : </a>
 <span class="lineNum">     100 </span>            :         public: // IStream
-<span class="lineNum">     101 </span><span class="lineCov">          3 :             std::ostream&amp; stream() const override { return m_os; }</span>
+<span class="lineNum">     101 </span><span class="lineCov">         40 :             std::ostream&amp; stream() const override { return m_os; }</span>
 <span class="lineNum">     102 </span>            :         };
 <span class="lineNum">     103 </span>            : 
 <span class="lineNum">     104 </span>            :         ///////////////////////////////////////////////////////////////////////////
@@ -184,9 +184,9 @@
 <span class="lineNum">     122 </span>            : 
 <a name="123"><span class="lineNum">     123 </span>            :     ///////////////////////////////////////////////////////////////////////////</a>
 <span class="lineNum">     124 </span>            : 
-<span class="lineNum">     125 </span><span class="lineCov">          3 :     auto makeStream( StringRef const &amp;filename ) -&gt; IStream const* {</span>
-<span class="lineNum">     126 </span><span class="lineCov">          3 :         if( filename.empty() )</span>
-<span class="lineNum">     127 </span><span class="lineCov">          3 :             return new Detail::CoutStream();</span>
+<span class="lineNum">     125 </span><span class="lineCov">         24 :     auto makeStream( StringRef const &amp;filename ) -&gt; IStream const* {</span>
+<span class="lineNum">     126 </span><span class="lineCov">         24 :         if( filename.empty() )</span>
+<span class="lineNum">     127 </span><span class="lineCov">         24 :             return new Detail::CoutStream();</span>
 <span class="lineNum">     128 </span><span class="lineNoCov">          0 :         else if( filename[0] == '%' ) {</span>
 <span class="lineNum">     129 </span><span class="lineNoCov">          0 :             if( filename == &quot;%debug&quot; )</span>
 <span class="lineNum">     130 </span><span class="lineNoCov">          0 :                 return new Detail::DebugOutStream();</span>
@@ -242,11 +242,11 @@
 <span class="lineNum">     180 </span>            : 
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : #ifndef CATCH_CONFIG_NOSTDOUT // If you #define this you must implement these functions</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          3 :     std::ostream&amp; cout() { return std::cout; }</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         24 :     std::ostream&amp; cout() { return std::cout; }</span></a>
 <span class="lineNum">     184 </span><span class="lineNoCov">          0 :     std::ostream&amp; cerr() { return std::cerr; }</span>
 <a name="185"><span class="lineNum">     185 </span><span class="lineNoCov">          0 :     std::ostream&amp; clog() { return std::clog; }</span></a>
 <span class="lineNum">     186 </span>            : #endif
-<span class="lineNum">     187 </span><span class="lineCov">          9 : }</span>
+<span class="lineNum">     187 </span><span class="lineCov">         72 : }</span>
 </pre>
       </td>
     </tr>

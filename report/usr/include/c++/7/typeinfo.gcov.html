@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -179,11 +179,11 @@
 <span class="lineNum">     117 </span>            :         ? __name &lt; __arg.__name
 <a name="118"><span class="lineNum">     118 </span>            :         : __builtin_strcmp (__name, __arg.__name) &lt; 0; }</a>
 <span class="lineNum">     119 </span>            : 
-<span class="lineNum">     120 </span><span class="lineCov">        228 :     bool operator==(const type_info&amp; __arg) const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     120 </span><span class="lineCov">       1859 :     bool operator==(const type_info&amp; __arg) const _GLIBCXX_NOEXCEPT</span>
 <span class="lineNum">     121 </span>            :     {
-<span class="lineNum">     122 </span><span class="lineCov">        228 :       return ((__name == __arg.__name)</span>
-<span class="lineNum">     123 </span><span class="lineCov">        228 :               || (__name[0] != '*' &amp;&amp;</span>
-<span class="lineNum">     124 </span><span class="lineCov">        228 :                   __builtin_strcmp (__name, __arg.__name) == 0));</span>
+<span class="lineNum">     122 </span><span class="lineCov">       1859 :       return ((__name == __arg.__name)</span>
+<span class="lineNum">     123 </span><span class="lineCov">       1859 :               || (__name[0] != '*' &amp;&amp;</span>
+<span class="lineNum">     124 </span><span class="lineCov">       1859 :                   __builtin_strcmp (__name, __arg.__name) == 0));</span>
 <span class="lineNum">     125 </span>            :     }
 <span class="lineNum">     126 </span>            :   #else
 <span class="lineNum">     127 </span>            :     // On some targets we can rely on type_info's NTBS being unique,

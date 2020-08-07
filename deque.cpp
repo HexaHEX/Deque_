@@ -1,5 +1,9 @@
 #include "deque.h"
 
+#ifdef BAD_ALLOC_TEST
+bool Deque::badAllocTestMode = false;
+#endif
+
 Deque::Deque()
     : _size(0)
 {
@@ -97,10 +101,6 @@ int Deque::PopFront(){
         return this->_PopLastItem();
     }
 
-    if ( this->_begin->next  == nullptr ){
-        throw DequeException(2, "Can not pop not existen item.");
-    }
-
     Node* front = this->_begin->next ;
     this->_begin->next = front->next;
     front->next->prev = this->_begin;
@@ -159,11 +159,11 @@ void Deque::LeftRemoveItem(Deque::DequeIterator find){
         return;
     }
 
-    if (find == this->end()) {
+    if (find == this->end()){
         return;
     }
 
-    if (find == this->end()--) {
+    if (find == this->end()--){
         this->PopBack();
         return;
     }
@@ -177,7 +177,7 @@ void Deque::LeftRemoveItem(Deque::DequeIterator find){
 }
 
 void Deque::InsertItem(DequeIterator insert, int value){
-    if (insert == this->begin()) {
+    if (insert == this->begin()){
         this->PushFront(value);
         return;
     }
@@ -202,8 +202,14 @@ void Deque::InsertItem(DequeIterator insert, int value){
 }
 
 Node* Deque::_CreateNode(int value){
+#ifdef BAD_ALLOC_TEST
+    if ( badAllocTestMode ){
+         return nullptr;
+    }    
+#endif
+ 
     Node* node = new Node();
-    if ( node ) {
+    if ( node ){
         node->value = value;
         node->next = nullptr;
         node->prev = nullptr;
@@ -235,9 +241,6 @@ void Deque::_AddFirstNode(int value){
 }
 
 int Deque::_PopLastItem(){
-    if ( _begin->next == nullptr ){
-        throw DequeException(10, "Empty Deque, Iterator not Exist");
-    }
     Node* node = this->_begin->next;
     this->_begin->next = nullptr;
     this->_end->prev = nullptr;

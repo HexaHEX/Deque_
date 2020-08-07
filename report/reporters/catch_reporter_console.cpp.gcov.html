@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">22</td>
@@ -235,21 +235,21 @@
 <span class="lineNum">     173 </span>            :     bool printInfoMessages;
 <a name="174"><span class="lineNum">     174 </span>            : };</a>
 <span class="lineNum">     175 </span>            : 
-<span class="lineNum">     176 </span><span class="lineCov">          9 : std::size_t makeRatio(std::size_t number, std::size_t total) {</span>
-<span class="lineNum">     177 </span><span class="lineCov">          9 :     std::size_t ratio = total &gt; 0 ? CATCH_CONFIG_CONSOLE_WIDTH * number / total : 0;</span>
-<span class="lineNum">     178 </span><span class="lineCov">          9 :     return (ratio == 0 &amp;&amp; number &gt; 0) ? 1 : ratio;</span>
+<span class="lineNum">     176 </span><span class="lineCov">         72 : std::size_t makeRatio(std::size_t number, std::size_t total) {</span>
+<span class="lineNum">     177 </span><span class="lineCov">         72 :     std::size_t ratio = total &gt; 0 ? CATCH_CONFIG_CONSOLE_WIDTH * number / total : 0;</span>
+<span class="lineNum">     178 </span><span class="lineCov">         72 :     return (ratio == 0 &amp;&amp; number &gt; 0) ? 1 : ratio;</span>
 <a name="179"><span class="lineNum">     179 </span>            : }</a>
 <span class="lineNum">     180 </span>            : 
-<span class="lineNum">     181 </span><span class="lineCov">          3 : std::size_t&amp; findMax(std::size_t&amp; i, std::size_t&amp; j, std::size_t&amp; k) {</span>
-<span class="lineNum">     182 </span><span class="lineCov">          3 :     if (i &gt; j &amp;&amp; i &gt; k)</span>
+<span class="lineNum">     181 </span><span class="lineCov">         24 : std::size_t&amp; findMax(std::size_t&amp; i, std::size_t&amp; j, std::size_t&amp; k) {</span>
+<span class="lineNum">     182 </span><span class="lineCov">         24 :     if (i &gt; j &amp;&amp; i &gt; k)</span>
 <span class="lineNum">     183 </span><span class="lineNoCov">          0 :         return i;</span>
-<span class="lineNum">     184 </span><span class="lineCov">          3 :     else if (j &gt; k)</span>
+<span class="lineNum">     184 </span><span class="lineCov">         24 :     else if (j &gt; k)</span>
 <span class="lineNum">     185 </span><span class="lineNoCov">          0 :         return j;</span>
 <span class="lineNum">     186 </span>            :     else
-<span class="lineNum">     187 </span><span class="lineCov">          3 :         return k;</span>
+<span class="lineNum">     187 </span><span class="lineCov">         24 :         return k;</span>
 <a name="188"><span class="lineNum">     188 </span>            : }</a>
 <span class="lineNum">     189 </span>            : 
-<span class="lineNum">     190 </span><span class="lineCov">         36 : struct ColumnInfo {</span>
+<span class="lineNum">     190 </span><span class="lineCov">        288 : struct ColumnInfo {</span>
 <span class="lineNum">     191 </span>            :     enum Justification { Left, Right };
 <span class="lineNum">     192 </span>            :     std::string name;
 <span class="lineNum">     193 </span>            :     int width;
@@ -331,7 +331,7 @@
 <span class="lineNum">     269 </span>            : };
 <a name="270"><span class="lineNum">     270 </span>            : } // end anon namespace</a>
 <span class="lineNum">     271 </span>            : 
-<span class="lineNum">     272 </span><span class="lineCov">          3 : class TablePrinter {</span>
+<span class="lineNum">     272 </span><span class="lineCov">         24 : class TablePrinter {</span>
 <span class="lineNum">     273 </span>            :     std::ostream&amp; m_os;
 <span class="lineNum">     274 </span>            :     std::vector&lt;ColumnInfo&gt; m_columnInfos;
 <span class="lineNum">     275 </span>            :     std::ostringstream m_oss;
@@ -339,9 +339,9 @@
 <span class="lineNum">     277 </span>            :     bool m_isOpen = false;
 <a name="278"><span class="lineNum">     278 </span>            : </a>
 <span class="lineNum">     279 </span>            : public:
-<span class="lineNum">     280 </span><span class="lineCov">          3 :     TablePrinter( std::ostream&amp; os, std::vector&lt;ColumnInfo&gt; columnInfos )</span>
-<span class="lineNum">     281 </span><span class="lineCov">          3 :     :   m_os( os ),</span>
-<span class="lineNum">     282 </span><span class="lineCov">          3 :         m_columnInfos( std::move( columnInfos ) ) {}</span>
+<span class="lineNum">     280 </span><span class="lineCov">         24 :     TablePrinter( std::ostream&amp; os, std::vector&lt;ColumnInfo&gt; columnInfos )</span>
+<span class="lineNum">     281 </span><span class="lineCov">         24 :     :   m_os( os ),</span>
+<span class="lineNum">     282 </span><span class="lineCov">         24 :         m_columnInfos( std::move( columnInfos ) ) {}</span>
 <span class="lineNum">     283 </span>            : 
 <span class="lineNum">     284 </span>            :     auto columnInfos() const -&gt; std::vector&lt;ColumnInfo&gt; const&amp; {
 <span class="lineNum">     285 </span>            :         return m_columnInfos;
@@ -363,13 +363,13 @@
 <span class="lineNum">     301 </span>            :             m_os &lt;&lt; Catch::getLineOfChars&lt;'-'&gt;() &lt;&lt; '\n';
 <a name="302"><span class="lineNum">     302 </span>            :         }</a>
 <span class="lineNum">     303 </span>            :     }
-<span class="lineNum">     304 </span><span class="lineCov">        405 :     void close() {</span>
-<span class="lineNum">     305 </span><span class="lineCov">        405 :         if (m_isOpen) {</span>
+<span class="lineNum">     304 </span><span class="lineCov">       3380 :     void close() {</span>
+<span class="lineNum">     305 </span><span class="lineCov">       3380 :         if (m_isOpen) {</span>
 <span class="lineNum">     306 </span><span class="lineNoCov">          0 :             *this &lt;&lt; RowBreak();</span>
 <span class="lineNum">     307 </span><span class="lineNoCov">          0 :             m_os &lt;&lt; std::endl;</span>
 <span class="lineNum">     308 </span><span class="lineNoCov">          0 :             m_isOpen = false;</span>
 <span class="lineNum">     309 </span>            :         }
-<span class="lineNum">     310 </span><span class="lineCov">        405 :     }</span>
+<span class="lineNum">     310 </span><span class="lineCov">       3380 :     }</span>
 <span class="lineNum">     311 </span>            : 
 <span class="lineNum">     312 </span>            :     template&lt;typename T&gt;
 <span class="lineNum">     313 </span>            :     friend TablePrinter&amp; operator &lt;&lt; (TablePrinter&amp; tp, T const&amp; value) {
@@ -408,11 +408,11 @@
 <span class="lineNum">     346 </span>            :     }
 <a name="347"><span class="lineNum">     347 </span>            : };</a>
 <span class="lineNum">     348 </span>            : 
-<span class="lineNum">     349 </span><span class="lineCov">          3 : ConsoleReporter::ConsoleReporter(ReporterConfig const&amp; config)</span>
+<span class="lineNum">     349 </span><span class="lineCov">         24 : ConsoleReporter::ConsoleReporter(ReporterConfig const&amp; config)</span>
 <a name="350"><span class="lineNum">     350 </span>            :     : StreamingReporterBase(config),</a>
 <span class="lineNum">     351 </span>            :     m_tablePrinter(new TablePrinter(config.stream(),
-<span class="lineNum">     352 </span><span class="lineCov">          3 :         [&amp;config]() -&gt; std::vector&lt;ColumnInfo&gt; {</span>
-<span class="lineNum">     353 </span><span class="lineCov">          3 :         if (config.fullConfig()-&gt;benchmarkNoAnalysis())</span>
+<span class="lineNum">     352 </span><span class="lineCov">         24 :         [&amp;config]() -&gt; std::vector&lt;ColumnInfo&gt; {</span>
+<span class="lineNum">     353 </span><span class="lineCov">         24 :         if (config.fullConfig()-&gt;benchmarkNoAnalysis())</span>
 <span class="lineNum">     354 </span>            :         {
 <span class="lineNum">     355 </span>            :             return{
 <span class="lineNum">     356 </span>            :                 { &quot;benchmark name&quot;, CATCH_CONFIG_CONSOLE_WIDTH - 43, ColumnInfo::Left },
@@ -428,9 +428,9 @@
 <span class="lineNum">     366 </span>            :                 { &quot;samples      mean       std dev&quot;, 14, ColumnInfo::Right },
 <span class="lineNum">     367 </span>            :                 { &quot;iterations   low mean   low std dev&quot;, 14, ColumnInfo::Right },
 <span class="lineNum">     368 </span>            :                 { &quot;estimated    high mean  high std dev&quot;, 14, ColumnInfo::Right }
-<span class="lineNum">     369 </span><span class="lineCov">          3 :             };</span>
+<span class="lineNum">     369 </span><span class="lineCov">         24 :             };</span>
 <span class="lineNum">     370 </span>            :         }
-<span class="lineNum">     371 </span><span class="lineCov">          3 :     }())) {}</span>
+<span class="lineNum">     371 </span><span class="lineCov">         24 :     }())) {}</span>
 <a name="372"><span class="lineNum">     372 </span>            : ConsoleReporter::~ConsoleReporter() = default;</a>
 <span class="lineNum">     373 </span>            : 
 <span class="lineNum">     374 </span><span class="lineNoCov">          0 : std::string ConsoleReporter::getDescription() {</span>
@@ -445,16 +445,16 @@
 <span class="lineNum">     383 </span><span class="lineNoCov">          0 :     stream &lt;&lt; &quot;Invalid Filter: &quot; &lt;&lt; arg &lt;&lt; std::endl;</span>
 <a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 : }</span></a>
 <span class="lineNum">     385 </span>            : 
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">        519 : void ConsoleReporter::assertionStarting(AssertionInfo const&amp;) {}</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">       4157 : void ConsoleReporter::assertionStarting(AssertionInfo const&amp;) {}</span></a>
 <span class="lineNum">     387 </span>            : 
-<span class="lineNum">     388 </span><span class="lineCov">         27 : bool ConsoleReporter::assertionEnded(AssertionStats const&amp; _assertionStats) {</span>
-<span class="lineNum">     389 </span><span class="lineCov">         27 :     AssertionResult const&amp; result = _assertionStats.assertionResult;</span>
+<span class="lineNum">     388 </span><span class="lineCov">        246 : bool ConsoleReporter::assertionEnded(AssertionStats const&amp; _assertionStats) {</span>
+<span class="lineNum">     389 </span><span class="lineCov">        246 :     AssertionResult const&amp; result = _assertionStats.assertionResult;</span>
 <span class="lineNum">     390 </span>            : 
-<span class="lineNum">     391 </span><span class="lineCov">         27 :     bool includeResults = m_config-&gt;includeSuccessfulResults() || !result.isOk();</span>
+<span class="lineNum">     391 </span><span class="lineCov">        246 :     bool includeResults = m_config-&gt;includeSuccessfulResults() || !result.isOk();</span>
 <span class="lineNum">     392 </span>            : 
 <span class="lineNum">     393 </span>            :     // Drop out if result was successful but we're not printing them.
-<span class="lineNum">     394 </span><span class="lineCov">         27 :     if (!includeResults &amp;&amp; result.getResultType() != ResultWas::Warning)</span>
-<span class="lineNum">     395 </span><span class="lineCov">         27 :         return false;</span>
+<span class="lineNum">     394 </span><span class="lineCov">        246 :     if (!includeResults &amp;&amp; result.getResultType() != ResultWas::Warning)</span>
+<span class="lineNum">     395 </span><span class="lineCov">        246 :         return false;</span>
 <span class="lineNum">     396 </span>            : 
 <span class="lineNum">     397 </span><span class="lineNoCov">          0 :     lazyPrint();</span>
 <span class="lineNum">     398 </span>            : 
@@ -464,14 +464,14 @@
 <span class="lineNum">     402 </span><span class="lineNoCov">          0 :     return true;</span>
 <a name="403"><span class="lineNum">     403 </span>            : }</a>
 <span class="lineNum">     404 </span>            : 
-<span class="lineNum">     405 </span><span class="lineCov">        198 : void ConsoleReporter::sectionStarting(SectionInfo const&amp; _sectionInfo) {</span>
-<span class="lineNum">     406 </span><span class="lineCov">        198 :     m_tablePrinter-&gt;close();</span>
-<span class="lineNum">     407 </span><span class="lineCov">        198 :     m_headerPrinted = false;</span>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">        198 :     StreamingReporterBase::sectionStarting(_sectionInfo);</span></a>
-<span class="lineNum">     409 </span><span class="lineCov">        198 : }</span>
-<span class="lineNum">     410 </span><span class="lineCov">        198 : void ConsoleReporter::sectionEnded(SectionStats const&amp; _sectionStats) {</span>
-<span class="lineNum">     411 </span><span class="lineCov">        198 :     m_tablePrinter-&gt;close();</span>
-<span class="lineNum">     412 </span><span class="lineCov">        198 :     if (_sectionStats.missingAssertions) {</span>
+<span class="lineNum">     405 </span><span class="lineCov">       1654 : void ConsoleReporter::sectionStarting(SectionInfo const&amp; _sectionInfo) {</span>
+<span class="lineNum">     406 </span><span class="lineCov">       1654 :     m_tablePrinter-&gt;close();</span>
+<span class="lineNum">     407 </span><span class="lineCov">       1654 :     m_headerPrinted = false;</span>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">       1654 :     StreamingReporterBase::sectionStarting(_sectionInfo);</span></a>
+<span class="lineNum">     409 </span><span class="lineCov">       1654 : }</span>
+<span class="lineNum">     410 </span><span class="lineCov">       1654 : void ConsoleReporter::sectionEnded(SectionStats const&amp; _sectionStats) {</span>
+<span class="lineNum">     411 </span><span class="lineCov">       1654 :     m_tablePrinter-&gt;close();</span>
+<span class="lineNum">     412 </span><span class="lineCov">       1654 :     if (_sectionStats.missingAssertions) {</span>
 <span class="lineNum">     413 </span><span class="lineNoCov">          0 :         lazyPrint();</span>
 <span class="lineNum">     414 </span><span class="lineNoCov">          0 :         Colour colour(Colour::ResultError);</span>
 <span class="lineNum">     415 </span><span class="lineNoCov">          0 :         if (m_sectionStack.size() &gt; 1)</span>
@@ -480,14 +480,14 @@
 <span class="lineNum">     418 </span><span class="lineNoCov">          0 :             stream &lt;&lt; &quot;\nNo assertions in test case&quot;;</span>
 <span class="lineNum">     419 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot; '&quot; &lt;&lt; _sectionStats.sectionInfo.name &lt;&lt; &quot;'\n&quot; &lt;&lt; std::endl;</span>
 <span class="lineNum">     420 </span>            :     }
-<span class="lineNum">     421 </span><span class="lineCov">        198 :     if (m_config-&gt;showDurations() == ShowDurations::Always) {</span>
+<span class="lineNum">     421 </span><span class="lineCov">       1654 :     if (m_config-&gt;showDurations() == ShowDurations::Always) {</span>
 <span class="lineNum">     422 </span><span class="lineNoCov">          0 :         stream &lt;&lt; getFormattedDuration(_sectionStats.durationInSeconds) &lt;&lt; &quot; s: &quot; &lt;&lt; _sectionStats.sectionInfo.name &lt;&lt; std::endl;</span>
 <span class="lineNum">     423 </span>            :     }
-<span class="lineNum">     424 </span><span class="lineCov">        198 :     if (m_headerPrinted) {</span>
+<span class="lineNum">     424 </span><span class="lineCov">       1654 :     if (m_headerPrinted) {</span>
 <span class="lineNum">     425 </span><span class="lineNoCov">          0 :         m_headerPrinted = false;</span>
 <span class="lineNum">     426 </span>            :     }
-<span class="lineNum">     427 </span><span class="lineCov">        198 :     StreamingReporterBase::sectionEnded(_sectionStats);</span>
-<span class="lineNum">     428 </span><span class="lineCov">        198 : }</span>
+<span class="lineNum">     427 </span><span class="lineCov">       1654 :     StreamingReporterBase::sectionEnded(_sectionStats);</span>
+<span class="lineNum">     428 </span><span class="lineCov">       1654 : }</span>
 <span class="lineNum">     429 </span>            : 
 <span class="lineNum">     430 </span>            : #if defined(CATCH_CONFIG_ENABLE_BENCHMARKING)
 <span class="lineNum">     431 </span>            : void ConsoleReporter::benchmarkPreparing(std::string const&amp; name) {
@@ -537,30 +537,30 @@
 <span class="lineNum">     475 </span>            : }
 <a name="476"><span class="lineNum">     476 </span>            : #endif // CATCH_CONFIG_ENABLE_BENCHMARKING</a>
 <span class="lineNum">     477 </span>            : 
-<span class="lineNum">     478 </span><span class="lineCov">          9 : void ConsoleReporter::testCaseEnded(TestCaseStats const&amp; _testCaseStats) {</span>
-<span class="lineNum">     479 </span><span class="lineCov">          9 :     m_tablePrinter-&gt;close();</span>
-<span class="lineNum">     480 </span><span class="lineCov">          9 :     StreamingReporterBase::testCaseEnded(_testCaseStats);</span>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">          9 :     m_headerPrinted = false;</span></a>
-<span class="lineNum">     482 </span><span class="lineCov">          9 : }</span>
-<span class="lineNum">     483 </span><span class="lineCov">          3 : void ConsoleReporter::testGroupEnded(TestGroupStats const&amp; _testGroupStats) {</span>
-<span class="lineNum">     484 </span><span class="lineCov">          3 :     if (currentGroupInfo.used) {</span>
+<span class="lineNum">     478 </span><span class="lineCov">         72 : void ConsoleReporter::testCaseEnded(TestCaseStats const&amp; _testCaseStats) {</span>
+<span class="lineNum">     479 </span><span class="lineCov">         72 :     m_tablePrinter-&gt;close();</span>
+<span class="lineNum">     480 </span><span class="lineCov">         72 :     StreamingReporterBase::testCaseEnded(_testCaseStats);</span>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">         72 :     m_headerPrinted = false;</span></a>
+<span class="lineNum">     482 </span><span class="lineCov">         72 : }</span>
+<span class="lineNum">     483 </span><span class="lineCov">         24 : void ConsoleReporter::testGroupEnded(TestGroupStats const&amp; _testGroupStats) {</span>
+<span class="lineNum">     484 </span><span class="lineCov">         24 :     if (currentGroupInfo.used) {</span>
 <span class="lineNum">     485 </span><span class="lineNoCov">          0 :         printSummaryDivider();</span>
 <span class="lineNum">     486 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot;Summary for group '&quot; &lt;&lt; _testGroupStats.groupInfo.name &lt;&lt; &quot;':\n&quot;;</span>
 <span class="lineNum">     487 </span><span class="lineNoCov">          0 :         printTotals(_testGroupStats.totals);</span>
 <span class="lineNum">     488 </span><span class="lineNoCov">          0 :         stream &lt;&lt; '\n' &lt;&lt; std::endl;</span>
 <span class="lineNum">     489 </span>            :     }
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">          3 :     StreamingReporterBase::testGroupEnded(_testGroupStats);</span></a>
-<span class="lineNum">     491 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     492 </span><span class="lineCov">          3 : void ConsoleReporter::testRunEnded(TestRunStats const&amp; _testRunStats) {</span>
-<span class="lineNum">     493 </span><span class="lineCov">          3 :     printTotalsDivider(_testRunStats.totals);</span>
-<span class="lineNum">     494 </span><span class="lineCov">          3 :     printTotals(_testRunStats.totals);</span>
-<span class="lineNum">     495 </span><span class="lineCov">          3 :     stream &lt;&lt; std::endl;</span>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">          3 :     StreamingReporterBase::testRunEnded(_testRunStats);</span></a>
-<span class="lineNum">     497 </span><span class="lineCov">          3 : }</span>
-<span class="lineNum">     498 </span><span class="lineCov">          3 : void ConsoleReporter::testRunStarting(TestRunInfo const&amp; _testInfo) {</span>
-<span class="lineNum">     499 </span><span class="lineCov">          3 :     StreamingReporterBase::testRunStarting(_testInfo);</span>
-<span class="lineNum">     500 </span><span class="lineCov">          3 :     printTestFilters();</span>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">          3 : }</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         24 :     StreamingReporterBase::testGroupEnded(_testGroupStats);</span></a>
+<span class="lineNum">     491 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">     492 </span><span class="lineCov">         24 : void ConsoleReporter::testRunEnded(TestRunStats const&amp; _testRunStats) {</span>
+<span class="lineNum">     493 </span><span class="lineCov">         24 :     printTotalsDivider(_testRunStats.totals);</span>
+<span class="lineNum">     494 </span><span class="lineCov">         24 :     printTotals(_testRunStats.totals);</span>
+<span class="lineNum">     495 </span><span class="lineCov">         24 :     stream &lt;&lt; std::endl;</span>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">         24 :     StreamingReporterBase::testRunEnded(_testRunStats);</span></a>
+<span class="lineNum">     497 </span><span class="lineCov">         24 : }</span>
+<span class="lineNum">     498 </span><span class="lineCov">         24 : void ConsoleReporter::testRunStarting(TestRunInfo const&amp; _testInfo) {</span>
+<span class="lineNum">     499 </span><span class="lineCov">         24 :     StreamingReporterBase::testRunStarting(_testInfo);</span>
+<span class="lineNum">     500 </span><span class="lineCov">         24 :     printTestFilters();</span>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">         24 : }</span></a>
 <span class="lineNum">     502 </span>            : 
 <span class="lineNum">     503 </span><span class="lineNoCov">          0 : void ConsoleReporter::lazyPrint() {</span>
 <span class="lineNum">     504 </span>            : 
@@ -669,15 +669,15 @@
 <span class="lineNum">     607 </span>            : 
 <a name="608"><span class="lineNum">     608 </span>            : };</a>
 <span class="lineNum">     609 </span>            : 
-<span class="lineNum">     610 </span><span class="lineCov">          3 : void ConsoleReporter::printTotals( Totals const&amp; totals ) {</span>
-<span class="lineNum">     611 </span><span class="lineCov">          3 :     if (totals.testCases.total() == 0) {</span>
+<span class="lineNum">     610 </span><span class="lineCov">         24 : void ConsoleReporter::printTotals( Totals const&amp; totals ) {</span>
+<span class="lineNum">     611 </span><span class="lineCov">         24 :     if (totals.testCases.total() == 0) {</span>
 <span class="lineNum">     612 </span><span class="lineNoCov">          0 :         stream &lt;&lt; Colour(Colour::Warning) &lt;&lt; &quot;No tests ran\n&quot;;</span>
-<span class="lineNum">     613 </span><span class="lineCov">          3 :     } else if (totals.assertions.total() &gt; 0 &amp;&amp; totals.testCases.allPassed()) {</span>
-<span class="lineNum">     614 </span><span class="lineCov">          3 :         stream &lt;&lt; Colour(Colour::ResultSuccess) &lt;&lt; &quot;All tests passed&quot;;</span>
-<span class="lineNum">     615 </span><span class="lineCov">          3 :         stream &lt;&lt; &quot; (&quot;</span>
-<span class="lineNum">     616 </span><span class="lineCov">          6 :             &lt;&lt; pluralise(totals.assertions.passed, &quot;assertion&quot;) &lt;&lt; &quot; in &quot;</span>
-<span class="lineNum">     617 </span><span class="lineCov">          6 :             &lt;&lt; pluralise(totals.testCases.passed, &quot;test case&quot;) &lt;&lt; ')'</span>
-<span class="lineNum">     618 </span><span class="lineCov">          3 :             &lt;&lt; '\n';</span>
+<span class="lineNum">     613 </span><span class="lineCov">         24 :     } else if (totals.assertions.total() &gt; 0 &amp;&amp; totals.testCases.allPassed()) {</span>
+<span class="lineNum">     614 </span><span class="lineCov">         24 :         stream &lt;&lt; Colour(Colour::ResultSuccess) &lt;&lt; &quot;All tests passed&quot;;</span>
+<span class="lineNum">     615 </span><span class="lineCov">         24 :         stream &lt;&lt; &quot; (&quot;</span>
+<span class="lineNum">     616 </span><span class="lineCov">         48 :             &lt;&lt; pluralise(totals.assertions.passed, &quot;assertion&quot;) &lt;&lt; &quot; in &quot;</span>
+<span class="lineNum">     617 </span><span class="lineCov">         48 :             &lt;&lt; pluralise(totals.testCases.passed, &quot;test case&quot;) &lt;&lt; ')'</span>
+<span class="lineNum">     618 </span><span class="lineCov">         24 :             &lt;&lt; '\n';</span>
 <span class="lineNum">     619 </span>            :     } else {
 <span class="lineNum">     620 </span>            : 
 <span class="lineNum">     621 </span><span class="lineNoCov">          0 :         std::vector&lt;SummaryColumn&gt; columns;</span>
@@ -697,7 +697,7 @@
 <span class="lineNum">     635 </span><span class="lineNoCov">          0 :         printSummaryRow(&quot;test cases&quot;, columns, 0);</span>
 <span class="lineNum">     636 </span><span class="lineNoCov">          0 :         printSummaryRow(&quot;assertions&quot;, columns, 1);</span>
 <a name="637"><span class="lineNum">     637 </span>            :     }</a>
-<span class="lineNum">     638 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     638 </span><span class="lineCov">         24 : }</span>
 <span class="lineNum">     639 </span><span class="lineNoCov">          0 : void ConsoleReporter::printSummaryRow(std::string const&amp; label, std::vector&lt;SummaryColumn&gt; const&amp; cols, std::size_t row) {</span>
 <span class="lineNum">     640 </span><span class="lineNoCov">          0 :     for (auto col : cols) {</span>
 <span class="lineNum">     641 </span><span class="lineNoCov">          0 :         std::string value = col.rows[row];</span>
@@ -716,41 +716,41 @@
 <span class="lineNum">     654 </span><span class="lineNoCov">          0 :     stream &lt;&lt; '\n';</span>
 <a name="655"><span class="lineNum">     655 </span><span class="lineNoCov">          0 : }</span></a>
 <span class="lineNum">     656 </span>            : 
-<span class="lineNum">     657 </span><span class="lineCov">          3 : void ConsoleReporter::printTotalsDivider(Totals const&amp; totals) {</span>
-<span class="lineNum">     658 </span><span class="lineCov">          3 :     if (totals.testCases.total() &gt; 0) {</span>
-<span class="lineNum">     659 </span><span class="lineCov">          3 :         std::size_t failedRatio = makeRatio(totals.testCases.failed, totals.testCases.total());</span>
-<span class="lineNum">     660 </span><span class="lineCov">          3 :         std::size_t failedButOkRatio = makeRatio(totals.testCases.failedButOk, totals.testCases.total());</span>
-<span class="lineNum">     661 </span><span class="lineCov">          3 :         std::size_t passedRatio = makeRatio(totals.testCases.passed, totals.testCases.total());</span>
-<span class="lineNum">     662 </span><span class="lineCov">          3 :         while (failedRatio + failedButOkRatio + passedRatio &lt; CATCH_CONFIG_CONSOLE_WIDTH - 1)</span>
+<span class="lineNum">     657 </span><span class="lineCov">         24 : void ConsoleReporter::printTotalsDivider(Totals const&amp; totals) {</span>
+<span class="lineNum">     658 </span><span class="lineCov">         24 :     if (totals.testCases.total() &gt; 0) {</span>
+<span class="lineNum">     659 </span><span class="lineCov">         24 :         std::size_t failedRatio = makeRatio(totals.testCases.failed, totals.testCases.total());</span>
+<span class="lineNum">     660 </span><span class="lineCov">         24 :         std::size_t failedButOkRatio = makeRatio(totals.testCases.failedButOk, totals.testCases.total());</span>
+<span class="lineNum">     661 </span><span class="lineCov">         24 :         std::size_t passedRatio = makeRatio(totals.testCases.passed, totals.testCases.total());</span>
+<span class="lineNum">     662 </span><span class="lineCov">         24 :         while (failedRatio + failedButOkRatio + passedRatio &lt; CATCH_CONFIG_CONSOLE_WIDTH - 1)</span>
 <span class="lineNum">     663 </span><span class="lineNoCov">          0 :             findMax(failedRatio, failedButOkRatio, passedRatio)++;</span>
-<span class="lineNum">     664 </span><span class="lineCov">          9 :         while (failedRatio + failedButOkRatio + passedRatio &gt; CATCH_CONFIG_CONSOLE_WIDTH - 1)</span>
-<span class="lineNum">     665 </span><span class="lineCov">          3 :             findMax(failedRatio, failedButOkRatio, passedRatio)--;</span>
+<span class="lineNum">     664 </span><span class="lineCov">         72 :         while (failedRatio + failedButOkRatio + passedRatio &gt; CATCH_CONFIG_CONSOLE_WIDTH - 1)</span>
+<span class="lineNum">     665 </span><span class="lineCov">         24 :             findMax(failedRatio, failedButOkRatio, passedRatio)--;</span>
 <span class="lineNum">     666 </span>            : 
-<span class="lineNum">     667 </span><span class="lineCov">          3 :         stream &lt;&lt; Colour(Colour::Error) &lt;&lt; std::string(failedRatio, '=');</span>
-<span class="lineNum">     668 </span><span class="lineCov">          3 :         stream &lt;&lt; Colour(Colour::ResultExpectedFailure) &lt;&lt; std::string(failedButOkRatio, '=');</span>
-<span class="lineNum">     669 </span><span class="lineCov">          3 :         if (totals.testCases.allPassed())</span>
-<span class="lineNum">     670 </span><span class="lineCov">          3 :             stream &lt;&lt; Colour(Colour::ResultSuccess) &lt;&lt; std::string(passedRatio, '=');</span>
+<span class="lineNum">     667 </span><span class="lineCov">         24 :         stream &lt;&lt; Colour(Colour::Error) &lt;&lt; std::string(failedRatio, '=');</span>
+<span class="lineNum">     668 </span><span class="lineCov">         24 :         stream &lt;&lt; Colour(Colour::ResultExpectedFailure) &lt;&lt; std::string(failedButOkRatio, '=');</span>
+<span class="lineNum">     669 </span><span class="lineCov">         24 :         if (totals.testCases.allPassed())</span>
+<span class="lineNum">     670 </span><span class="lineCov">         24 :             stream &lt;&lt; Colour(Colour::ResultSuccess) &lt;&lt; std::string(passedRatio, '=');</span>
 <span class="lineNum">     671 </span>            :         else
 <span class="lineNum">     672 </span><span class="lineNoCov">          0 :             stream &lt;&lt; Colour(Colour::Success) &lt;&lt; std::string(passedRatio, '=');</span>
 <span class="lineNum">     673 </span>            :     } else {
 <span class="lineNum">     674 </span><span class="lineNoCov">          0 :         stream &lt;&lt; Colour(Colour::Warning) &lt;&lt; std::string(CATCH_CONFIG_CONSOLE_WIDTH - 1, '=');</span>
 <span class="lineNum">     675 </span>            :     }
-<a name="676"><span class="lineNum">     676 </span><span class="lineCov">          3 :     stream &lt;&lt; '\n';</span></a>
-<span class="lineNum">     677 </span><span class="lineCov">          3 : }</span>
+<a name="676"><span class="lineNum">     676 </span><span class="lineCov">         24 :     stream &lt;&lt; '\n';</span></a>
+<span class="lineNum">     677 </span><span class="lineCov">         24 : }</span>
 <span class="lineNum">     678 </span><span class="lineNoCov">          0 : void ConsoleReporter::printSummaryDivider() {</span>
 <span class="lineNum">     679 </span><span class="lineNoCov">          0 :     stream &lt;&lt; getLineOfChars&lt;'-'&gt;() &lt;&lt; '\n';</span>
 <a name="680"><span class="lineNum">     680 </span><span class="lineNoCov">          0 : }</span></a>
 <span class="lineNum">     681 </span>            : 
-<span class="lineNum">     682 </span><span class="lineCov">          3 : void ConsoleReporter::printTestFilters() {</span>
-<span class="lineNum">     683 </span><span class="lineCov">          3 :     if (m_config-&gt;testSpec().hasFilters()) {</span>
+<span class="lineNum">     682 </span><span class="lineCov">         24 : void ConsoleReporter::printTestFilters() {</span>
+<span class="lineNum">     683 </span><span class="lineCov">         24 :     if (m_config-&gt;testSpec().hasFilters()) {</span>
 <span class="lineNum">     684 </span><span class="lineNoCov">          0 :         Colour guard(Colour::BrightYellow);</span>
 <span class="lineNum">     685 </span><span class="lineNoCov">          0 :         stream &lt;&lt; &quot;Filters: &quot; &lt;&lt; serializeFilters(m_config-&gt;getTestsOrTags()) &lt;&lt; '\n';</span>
 <span class="lineNum">     686 </span>            :     }
-<span class="lineNum">     687 </span><span class="lineCov">          3 : }</span>
+<span class="lineNum">     687 </span><span class="lineCov">         24 : }</span>
 <span class="lineNum">     688 </span>            : 
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">          3 : CATCH_REGISTER_REPORTER(&quot;console&quot;, ConsoleReporter)</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         24 : CATCH_REGISTER_REPORTER(&quot;console&quot;, ConsoleReporter)</span></a>
 <span class="lineNum">     690 </span>            : 
-<span class="lineNum">     691 </span><span class="lineCov">          9 : } // end namespace Catch</span>
+<span class="lineNum">     691 </span><span class="lineCov">         72 : } // end namespace Catch</span>
 <span class="lineNum">     692 </span>            : 
 <span class="lineNum">     693 </span>            : #if defined(_MSC_VER)
 <span class="lineNum">     694 </span>            : #pragma warning(pop)

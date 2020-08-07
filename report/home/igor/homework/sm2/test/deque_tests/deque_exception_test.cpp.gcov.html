@@ -31,13 +31,13 @@
             <td class="headerValue">report.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">20</td>
+            <td class="headerCovTableEntry">20</td>
             <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -61,28 +61,40 @@
 <pre class="sourceHeading">          Line data    Source code</pre>
 <pre class="source">
 <a name="1"><span class="lineNum">       1 </span>            : #include &quot;../catch2/catch.hpp&quot;</a>
-<a name="2"><span class="lineNum">       2 </span>            : #include &quot;../dequeexception.h&quot;</a>
-<span class="lineNum">       3 </span>            : 
-<span class="lineNum">       4 </span><span class="lineCov">          9 : TEST_CASE(&quot;Test Exception for Deque&quot;, &quot;[exception]&quot;)</span>
-<span class="lineNum">       5 </span>            : {
-<span class="lineNum">       6 </span>            : 
-<span class="lineNum">       7 </span><span class="lineCov">         12 :     SECTION(&quot;Test Value for Automate&quot;)</span>
-<span class="lineNum">       8 </span>            :     {
-<span class="lineNum">       9 </span><span class="lineCov">          6 :         DequeException err;</span>
-<span class="lineNum">      10 </span><span class="lineCov">        549 :         REQUIRE(err.GetCodeError() == 0);</span>
-<span class="lineNum">      11 </span><span class="lineCov">          3 :         REQUIRE(err.GetMessageError() == &quot;&quot;);</span>
-<span class="lineNum">      12 </span>            :     }
-<span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">         12 :     SECTION(&quot;Test Handle Value&quot;)</span>
-<span class="lineNum">      15 </span>            :     {
-<span class="lineNum">      16 </span><span class="lineCov">          3 :         unsigned int code = 5;</span>
-<span class="lineNum">      17 </span><span class="lineCov">          6 :         std::string msg = &quot;error&quot;;</span>
-<span class="lineNum">      18 </span><span class="lineCov">          6 :         DequeException err(code, msg);</span>
-<span class="lineNum">      19 </span><span class="lineCov">          3 :         REQUIRE(err.GetCodeError() == code);</span>
-<span class="lineNum">      20 </span><span class="lineCov">          3 :         REQUIRE(err.GetMessageError() == msg);</span>
-<a name="21"><span class="lineNum">      21 </span>            :     }</a>
-<span class="lineNum">      22 </span>            : 
-<span class="lineNum">      23 </span><span class="lineCov">         15 : }</span>
+<span class="lineNum">       2 </span>            : #include &quot;../dequeexception.h&quot;
+<a name="3"><span class="lineNum">       3 </span>            : #include &lt;sstream&gt;</a>
+<span class="lineNum">       4 </span>            : 
+<span class="lineNum">       5 </span><span class="lineCov">         20 : TEST_CASE(&quot;Test Exception for Deque&quot;, &quot;[exception]&quot;)</span>
+<span class="lineNum">       6 </span>            : {
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span><span class="lineCov">         30 :     SECTION(&quot;Test Value for Automate&quot;)</span>
+<span class="lineNum">       9 </span>            :     {
+<span class="lineNum">      10 </span><span class="lineCov">         10 :         DequeException err;</span>
+<span class="lineNum">      11 </span><span class="lineCov">        950 :         REQUIRE(err.GetCodeError() == 0);</span>
+<span class="lineNum">      12 </span><span class="lineCov">          5 :         REQUIRE(err.GetMessageError() == &quot;&quot;);</span>
+<span class="lineNum">      13 </span>            :     }
+<span class="lineNum">      14 </span>            : 
+<span class="lineNum">      15 </span><span class="lineCov">         30 :     SECTION(&quot;Test Handle Value&quot;)</span>
+<span class="lineNum">      16 </span>            :     {
+<span class="lineNum">      17 </span><span class="lineCov">          5 :         unsigned int code = 5;</span>
+<span class="lineNum">      18 </span><span class="lineCov">         10 :         std::string msg = &quot;error&quot;;</span>
+<span class="lineNum">      19 </span><span class="lineCov">         10 :         DequeException err(code, msg);</span>
+<span class="lineNum">      20 </span><span class="lineCov">          5 :         REQUIRE(err.GetCodeError() == code);</span>
+<span class="lineNum">      21 </span><span class="lineCov">          5 :         REQUIRE(err.GetMessageError() == msg);</span>
+<span class="lineNum">      22 </span>            :     }
+<span class="lineNum">      23 </span>            : 
+<span class="lineNum">      24 </span><span class="lineCov">         30 :     SECTION(&quot;Test Stream Value&quot;)</span>
+<span class="lineNum">      25 </span>            :     {
+<span class="lineNum">      26 </span><span class="lineCov">          5 :         unsigned int code = 5;</span>
+<span class="lineNum">      27 </span><span class="lineCov">         10 :         std::string msg = &quot;error&quot;;</span>
+<span class="lineNum">      28 </span><span class="lineCov">         10 :         DequeException err(code, msg);</span>
+<span class="lineNum">      29 </span><span class="lineCov">         10 :         std::stringstream ss;</span>
+<span class="lineNum">      30 </span><span class="lineCov">          5 :         ss &lt;&lt; err;</span>
+<span class="lineNum">      31 </span><span class="lineCov">         10 :         std::string result(&quot;DequeException : error code = 5,  error&quot;);</span>
+<span class="lineNum">      32 </span><span class="lineCov">          5 :         REQUIRE( ss.str() == result);</span>
+<a name="33"><span class="lineNum">      33 </span>            :     }</a>
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span><span class="lineCov">         30 : }</span>
 </pre>
       </td>
     </tr>

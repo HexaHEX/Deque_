@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">12</td>
@@ -92,58 +92,58 @@
 <span class="lineNum">      30 </span>            :     template&lt;typename DerivedT&gt;
 <a name="31"><span class="lineNum">      31 </span>            :     struct StreamingReporterBase : IStreamingReporter {</a>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">          3 :         StreamingReporterBase( ReporterConfig const&amp; _config )</span>
+<span class="lineNum">      33 </span><span class="lineCov">         24 :         StreamingReporterBase( ReporterConfig const&amp; _config )</span>
 <span class="lineNum">      34 </span>            :         :   m_config( _config.fullConfig() ),
-<span class="lineNum">      35 </span><span class="lineCov">          3 :             stream( _config.stream() )</span>
+<span class="lineNum">      35 </span><span class="lineCov">         24 :             stream( _config.stream() )</span>
 <span class="lineNum">      36 </span>            :         {
-<span class="lineNum">      37 </span><span class="lineCov">          3 :             m_reporterPrefs.shouldRedirectStdOut = false;</span>
-<span class="lineNum">      38 </span><span class="lineCov">          3 :             if( !DerivedT::getSupportedVerbosities().count( m_config-&gt;verbosity() ) )</span>
+<span class="lineNum">      37 </span><span class="lineCov">         24 :             m_reporterPrefs.shouldRedirectStdOut = false;</span>
+<span class="lineNum">      38 </span><span class="lineCov">         24 :             if( !DerivedT::getSupportedVerbosities().count( m_config-&gt;verbosity() ) )</span>
 <span class="lineNum">      39 </span><span class="lineNoCov">          0 :                 CATCH_ERROR( &quot;Verbosity level not supported by this reporter&quot; );</span>
-<a name="40"><span class="lineNum">      40 </span><span class="lineCov">          3 :         }</span></a>
+<a name="40"><span class="lineNum">      40 </span><span class="lineCov">         24 :         }</span></a>
 <span class="lineNum">      41 </span>            : 
-<span class="lineNum">      42 </span><span class="lineCov">         78 :         ReporterPreferences getPreferences() const override {</span>
-<span class="lineNum">      43 </span><span class="lineCov">         78 :             return m_reporterPrefs;</span>
+<span class="lineNum">      42 </span><span class="lineCov">        659 :         ReporterPreferences getPreferences() const override {</span>
+<span class="lineNum">      43 </span><span class="lineCov">        659 :             return m_reporterPrefs;</span>
 <a name="44"><span class="lineNum">      44 </span>            :         }</a>
 <span class="lineNum">      45 </span>            : 
-<span class="lineNum">      46 </span><span class="lineCov">          3 :         static std::set&lt;Verbosity&gt; getSupportedVerbosities() {</span>
-<span class="lineNum">      47 </span><span class="lineCov">          3 :             return { Verbosity::Normal };</span>
+<span class="lineNum">      46 </span><span class="lineCov">         24 :         static std::set&lt;Verbosity&gt; getSupportedVerbosities() {</span>
+<span class="lineNum">      47 </span><span class="lineCov">         24 :             return { Verbosity::Normal };</span>
 <a name="48"><span class="lineNum">      48 </span>            :         }</a>
 <span class="lineNum">      49 </span>            : 
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">          3 :         ~StreamingReporterBase() override = default;</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">         24 :         ~StreamingReporterBase() override = default;</span></a>
 <span class="lineNum">      51 </span>            : 
 <a name="52"><span class="lineNum">      52 </span><span class="lineNoCov">          0 :         void noMatchingTestCases(std::string const&amp;) override {}</span></a>
 <span class="lineNum">      53 </span>            : 
 <a name="54"><span class="lineNum">      54 </span><span class="lineNoCov">          0 :         void reportInvalidArguments(std::string const&amp;) override {}</span></a>
 <span class="lineNum">      55 </span>            :         
-<span class="lineNum">      56 </span><span class="lineCov">          3 :         void testRunStarting(TestRunInfo const&amp; _testRunInfo) override {</span>
-<span class="lineNum">      57 </span><span class="lineCov">          3 :             currentTestRunInfo = _testRunInfo;</span>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">          3 :         }</span></a>
+<span class="lineNum">      56 </span><span class="lineCov">         24 :         void testRunStarting(TestRunInfo const&amp; _testRunInfo) override {</span>
+<span class="lineNum">      57 </span><span class="lineCov">         24 :             currentTestRunInfo = _testRunInfo;</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         24 :         }</span></a>
 <span class="lineNum">      59 </span>            : 
-<span class="lineNum">      60 </span><span class="lineCov">          3 :         void testGroupStarting(GroupInfo const&amp; _groupInfo) override {</span>
-<span class="lineNum">      61 </span><span class="lineCov">          3 :             currentGroupInfo = _groupInfo;</span>
-<a name="62"><span class="lineNum">      62 </span><span class="lineCov">          3 :         }</span></a>
+<span class="lineNum">      60 </span><span class="lineCov">         24 :         void testGroupStarting(GroupInfo const&amp; _groupInfo) override {</span>
+<span class="lineNum">      61 </span><span class="lineCov">         24 :             currentGroupInfo = _groupInfo;</span>
+<a name="62"><span class="lineNum">      62 </span><span class="lineCov">         24 :         }</span></a>
 <span class="lineNum">      63 </span>            : 
-<span class="lineNum">      64 </span><span class="lineCov">          9 :         void testCaseStarting(TestCaseInfo const&amp; _testInfo) override  {</span>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          9 :             currentTestCaseInfo = _testInfo;</span></a>
-<span class="lineNum">      66 </span><span class="lineCov">          9 :         }</span>
-<span class="lineNum">      67 </span><span class="lineCov">        198 :         void sectionStarting(SectionInfo const&amp; _sectionInfo) override {</span>
-<span class="lineNum">      68 </span><span class="lineCov">        198 :             m_sectionStack.push_back(_sectionInfo);</span>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">        198 :         }</span></a>
+<span class="lineNum">      64 </span><span class="lineCov">         72 :         void testCaseStarting(TestCaseInfo const&amp; _testInfo) override  {</span>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">         72 :             currentTestCaseInfo = _testInfo;</span></a>
+<span class="lineNum">      66 </span><span class="lineCov">         72 :         }</span>
+<span class="lineNum">      67 </span><span class="lineCov">       1654 :         void sectionStarting(SectionInfo const&amp; _sectionInfo) override {</span>
+<span class="lineNum">      68 </span><span class="lineCov">       1654 :             m_sectionStack.push_back(_sectionInfo);</span>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">       1654 :         }</span></a>
 <span class="lineNum">      70 </span>            : 
-<span class="lineNum">      71 </span><span class="lineCov">        198 :         void sectionEnded(SectionStats const&amp; /* _sectionStats */) override {</span>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        198 :             m_sectionStack.pop_back();</span></a>
-<span class="lineNum">      73 </span><span class="lineCov">        198 :         }</span>
-<span class="lineNum">      74 </span><span class="lineCov">          9 :         void testCaseEnded(TestCaseStats const&amp; /* _testCaseStats */) override {</span>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          9 :             currentTestCaseInfo.reset();</span></a>
-<span class="lineNum">      76 </span><span class="lineCov">          9 :         }</span>
-<span class="lineNum">      77 </span><span class="lineCov">          3 :         void testGroupEnded(TestGroupStats const&amp; /* _testGroupStats */) override {</span>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          3 :             currentGroupInfo.reset();</span></a>
-<span class="lineNum">      79 </span><span class="lineCov">          3 :         }</span>
-<span class="lineNum">      80 </span><span class="lineCov">          3 :         void testRunEnded(TestRunStats const&amp; /* _testRunStats */) override {</span>
-<span class="lineNum">      81 </span><span class="lineCov">          3 :             currentTestCaseInfo.reset();</span>
-<span class="lineNum">      82 </span><span class="lineCov">          3 :             currentGroupInfo.reset();</span>
-<span class="lineNum">      83 </span><span class="lineCov">          3 :             currentTestRunInfo.reset();</span>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          3 :         }</span></a>
+<span class="lineNum">      71 </span><span class="lineCov">       1654 :         void sectionEnded(SectionStats const&amp; /* _sectionStats */) override {</span>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">       1654 :             m_sectionStack.pop_back();</span></a>
+<span class="lineNum">      73 </span><span class="lineCov">       1654 :         }</span>
+<span class="lineNum">      74 </span><span class="lineCov">         72 :         void testCaseEnded(TestCaseStats const&amp; /* _testCaseStats */) override {</span>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">         72 :             currentTestCaseInfo.reset();</span></a>
+<span class="lineNum">      76 </span><span class="lineCov">         72 :         }</span>
+<span class="lineNum">      77 </span><span class="lineCov">         24 :         void testGroupEnded(TestGroupStats const&amp; /* _testGroupStats */) override {</span>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">         24 :             currentGroupInfo.reset();</span></a>
+<span class="lineNum">      79 </span><span class="lineCov">         24 :         }</span>
+<span class="lineNum">      80 </span><span class="lineCov">         24 :         void testRunEnded(TestRunStats const&amp; /* _testRunStats */) override {</span>
+<span class="lineNum">      81 </span><span class="lineCov">         24 :             currentTestCaseInfo.reset();</span>
+<span class="lineNum">      82 </span><span class="lineCov">         24 :             currentGroupInfo.reset();</span>
+<span class="lineNum">      83 </span><span class="lineCov">         24 :             currentTestRunInfo.reset();</span>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">         24 :         }</span></a>
 <span class="lineNum">      85 </span>            : 
 <span class="lineNum">      86 </span><span class="lineNoCov">          0 :         void skipTest(TestCaseInfo const&amp;) override {</span>
 <span class="lineNum">      87 </span>            :             // Don't do anything with this by default.

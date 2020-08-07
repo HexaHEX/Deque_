@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -76,7 +76,7 @@
 <span class="lineNum">      14 </span>            : 
 <a name="15"><span class="lineNum">      15 </span>            :     class TestSpec;</a>
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">         18 :     struct ITestInvoker {</span>
+<span class="lineNum">      17 </span><span class="lineCov">        144 :     struct ITestInvoker {</span>
 <span class="lineNum">      18 </span>            :         virtual void invoke () const = 0;
 <span class="lineNum">      19 </span>            :         virtual ~ITestInvoker();
 <span class="lineNum">      20 </span>            :     };
@@ -84,7 +84,7 @@
 <span class="lineNum">      22 </span>            :     class TestCase;
 <a name="23"><span class="lineNum">      23 </span>            :     struct IConfig;</a>
 <span class="lineNum">      24 </span>            : 
-<span class="lineNum">      25 </span><span class="lineCov">          6 :     struct ITestCaseRegistry {</span>
+<span class="lineNum">      25 </span><span class="lineCov">         48 :     struct ITestCaseRegistry {</span>
 <span class="lineNum">      26 </span>            :         virtual ~ITestCaseRegistry();
 <span class="lineNum">      27 </span>            :         virtual std::vector&lt;TestCase&gt; const&amp; getAllTests() const = 0;
 <span class="lineNum">      28 </span>            :         virtual std::vector&lt;TestCase&gt; const&amp; getAllTestsSorted( IConfig const&amp; config ) const = 0;

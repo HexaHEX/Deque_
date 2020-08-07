@@ -3,7 +3,6 @@
 #include "../catch2/catch.hpp"
 #include "../deque.h"
 
-
 TEST_CASE("Test Deque", "[Deque]")
 {
     Deque deq;
@@ -107,5 +106,58 @@ TEST_CASE("Test Deque", "[Deque]")
         REQUIRE_THROWS_AS( deq.PopBack(), DequeException);
         REQUIRE_THROWS_AS( deq.PopFront(), DequeException);
     }
+
+#ifdef BAD_ALLOC_TEST
+    SECTION("Bad Alloc Deque ctor")
+    {
+        Deque::setBadAllocTestMode( true ); 
+        REQUIRE_THROWS_AS( Deque(), DequeException );
+        Deque::setBadAllocTestMode( false ); 
+    }
+
+    SECTION("Bad Alloc Deque PushBack")
+    {
+        Deque deque;
+        Deque::setBadAllocTestMode( true ); 
+        REQUIRE_THROWS_AS( deque.PushBack(1), DequeException );
+        Deque::setBadAllocTestMode( false ); 
+    }
+
+    SECTION("Bad Alloc Deque Second PushBack")
+    {
+        Deque deque;
+        deque.PushBack(1);
+        Deque::setBadAllocTestMode( true ); 
+        REQUIRE_THROWS_AS( deque.PushBack(2), DequeException );
+        Deque::setBadAllocTestMode( false ); 
+    }
+
+    SECTION("Bad Alloc Deque PushFront")
+    {
+        Deque deque;
+        Deque::setBadAllocTestMode( true ); 
+        REQUIRE_THROWS_AS( deque.PushFront(2), DequeException );
+        Deque::setBadAllocTestMode( false ); 
+    }
+
+    SECTION("Bad Alloc Deque Second PushFront")
+    {
+        Deque deque;
+        deque.PushFront(1);
+        Deque::setBadAllocTestMode( true ); 
+        REQUIRE_THROWS_AS( deque.PushFront(2), DequeException );
+        Deque::setBadAllocTestMode( false ); 
+    }
+
+    SECTION("Bad Alloc Deque InsertItem")
+    {
+        Deque deque;
+        deque.PushFront(1);
+        Deque::setBadAllocTestMode( true ); 
+        REQUIRE_THROWS_AS( deque.InsertItem( ++deque.begin(), 2), std::exception );
+        Deque::setBadAllocTestMode( false ); 
+    }
+#endif
+
 }
 

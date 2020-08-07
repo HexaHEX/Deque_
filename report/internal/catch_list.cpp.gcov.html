@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -218,18 +218,18 @@
 <span class="lineNum">     156 </span><span class="lineNoCov">          0 :         return factories.size();</span>
 <a name="157"><span class="lineNum">     157 </span>            :     }</a>
 <span class="lineNum">     158 </span>            : 
-<span class="lineNum">     159 </span><span class="lineCov">          3 :     Option&lt;std::size_t&gt; list( std::shared_ptr&lt;Config&gt; const&amp; config ) {</span>
-<span class="lineNum">     160 </span><span class="lineCov">          3 :         Option&lt;std::size_t&gt; listedCount;</span>
-<span class="lineNum">     161 </span><span class="lineCov">          3 :         getCurrentMutableContext().setConfig( config );</span>
-<span class="lineNum">     162 </span><span class="lineCov">          3 :         if( config-&gt;listTests() )</span>
+<span class="lineNum">     159 </span><span class="lineCov">         24 :     Option&lt;std::size_t&gt; list( std::shared_ptr&lt;Config&gt; const&amp; config ) {</span>
+<span class="lineNum">     160 </span><span class="lineCov">         24 :         Option&lt;std::size_t&gt; listedCount;</span>
+<span class="lineNum">     161 </span><span class="lineCov">         24 :         getCurrentMutableContext().setConfig( config );</span>
+<span class="lineNum">     162 </span><span class="lineCov">         24 :         if( config-&gt;listTests() )</span>
 <span class="lineNum">     163 </span><span class="lineNoCov">          0 :             listedCount = listedCount.valueOr(0) + listTests( *config );</span>
-<span class="lineNum">     164 </span><span class="lineCov">          3 :         if( config-&gt;listTestNamesOnly() )</span>
+<span class="lineNum">     164 </span><span class="lineCov">         24 :         if( config-&gt;listTestNamesOnly() )</span>
 <span class="lineNum">     165 </span><span class="lineNoCov">          0 :             listedCount = listedCount.valueOr(0) + listTestsNamesOnly( *config );</span>
-<span class="lineNum">     166 </span><span class="lineCov">          3 :         if( config-&gt;listTags() )</span>
+<span class="lineNum">     166 </span><span class="lineCov">         24 :         if( config-&gt;listTags() )</span>
 <span class="lineNum">     167 </span><span class="lineNoCov">          0 :             listedCount = listedCount.valueOr(0) + listTags( *config );</span>
-<span class="lineNum">     168 </span><span class="lineCov">          3 :         if( config-&gt;listReporters() )</span>
+<span class="lineNum">     168 </span><span class="lineCov">         24 :         if( config-&gt;listReporters() )</span>
 <span class="lineNum">     169 </span><span class="lineNoCov">          0 :             listedCount = listedCount.valueOr(0) + listReporters();</span>
-<span class="lineNum">     170 </span><span class="lineCov">          3 :         return listedCount;</span>
+<span class="lineNum">     170 </span><span class="lineCov">         24 :         return listedCount;</span>
 <span class="lineNum">     171 </span>            :     }
 <span class="lineNum">     172 </span>            : 
 <span class="lineNum">     173 </span>            : } // end namespace Catch

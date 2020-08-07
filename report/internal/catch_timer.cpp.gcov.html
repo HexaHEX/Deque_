@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -76,8 +76,8 @@
 <span class="lineNum">      14 </span>            : 
 <a name="15"><span class="lineNum">      15 </span>            : namespace Catch {</a>
 <span class="lineNum">      16 </span>            : 
-<span class="lineNum">      17 </span><span class="lineCov">        840 :     auto getCurrentNanosecondsSinceEpoch() -&gt; uint64_t {</span>
-<span class="lineNum">      18 </span><span class="lineCov">        840 :         return std::chrono::duration_cast&lt;std::chrono::nanoseconds&gt;( std::chrono::high_resolution_clock::now().time_since_epoch() ).count();</span>
+<span class="lineNum">      17 </span><span class="lineCov">       7450 :     auto getCurrentNanosecondsSinceEpoch() -&gt; uint64_t {</span>
+<span class="lineNum">      18 </span><span class="lineCov">       7450 :         return std::chrono::duration_cast&lt;std::chrono::nanoseconds&gt;( std::chrono::high_resolution_clock::now().time_since_epoch() ).count();</span>
 <span class="lineNum">      19 </span>            :     }
 <a name="20"><span class="lineNum">      20 </span>            : </a>
 <span class="lineNum">      21 </span>            :     namespace {
@@ -116,20 +116,20 @@
 <span class="lineNum">      54 </span><span class="lineNoCov">          0 :         return s_resolution;</span>
 <a name="55"><span class="lineNum">      55 </span>            :     }</a>
 <span class="lineNum">      56 </span>            : 
-<span class="lineNum">      57 </span><span class="lineCov">        642 :     void Timer::start() {</span>
-<a name="58"><span class="lineNum">      58 </span><span class="lineCov">        642 :        m_nanoseconds = getCurrentNanosecondsSinceEpoch();</span></a>
-<span class="lineNum">      59 </span><span class="lineCov">        642 :     }</span>
-<span class="lineNum">      60 </span><span class="lineCov">        198 :     auto Timer::getElapsedNanoseconds() const -&gt; uint64_t {</span>
-<a name="61"><span class="lineNum">      61 </span><span class="lineCov">        198 :         return getCurrentNanosecondsSinceEpoch() - m_nanoseconds;</span></a>
+<span class="lineNum">      57 </span><span class="lineCov">       5796 :     void Timer::start() {</span>
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">       5796 :        m_nanoseconds = getCurrentNanosecondsSinceEpoch();</span></a>
+<span class="lineNum">      59 </span><span class="lineCov">       5796 :     }</span>
+<span class="lineNum">      60 </span><span class="lineCov">       1654 :     auto Timer::getElapsedNanoseconds() const -&gt; uint64_t {</span>
+<a name="61"><span class="lineNum">      61 </span><span class="lineCov">       1654 :         return getCurrentNanosecondsSinceEpoch() - m_nanoseconds;</span></a>
 <span class="lineNum">      62 </span>            :     }
-<span class="lineNum">      63 </span><span class="lineCov">        198 :     auto Timer::getElapsedMicroseconds() const -&gt; uint64_t {</span>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">        198 :         return getElapsedNanoseconds()/1000;</span></a>
+<span class="lineNum">      63 </span><span class="lineCov">       1654 :     auto Timer::getElapsedMicroseconds() const -&gt; uint64_t {</span>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">       1654 :         return getElapsedNanoseconds()/1000;</span></a>
 <span class="lineNum">      65 </span>            :     }
 <span class="lineNum">      66 </span><span class="lineNoCov">          0 :     auto Timer::getElapsedMilliseconds() const -&gt; unsigned int {</span>
 <a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :         return static_cast&lt;unsigned int&gt;(getElapsedMicroseconds()/1000);</span></a>
 <span class="lineNum">      68 </span>            :     }
-<span class="lineNum">      69 </span><span class="lineCov">        198 :     auto Timer::getElapsedSeconds() const -&gt; double {</span>
-<span class="lineNum">      70 </span><span class="lineCov">        198 :         return getElapsedMicroseconds()/1000000.0;</span>
+<span class="lineNum">      69 </span><span class="lineCov">       1654 :     auto Timer::getElapsedSeconds() const -&gt; double {</span>
+<span class="lineNum">      70 </span><span class="lineCov">       1654 :         return getElapsedMicroseconds()/1000000.0;</span>
 <span class="lineNum">      71 </span>            :     }
 <span class="lineNum">      72 </span>            : 
 <span class="lineNum">      73 </span>            : 

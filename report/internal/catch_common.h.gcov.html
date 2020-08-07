@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -95,7 +95,7 @@
 <span class="lineNum">      33 </span>            :         No
 <a name="34"><span class="lineNum">      34 </span>            :     }; };</a>
 <span class="lineNum">      35 </span>            : 
-<span class="lineNum">      36 </span><span class="lineCov">       1176 :     class NonCopyable {</span>
+<span class="lineNum">      36 </span><span class="lineCov">      10658 :     class NonCopyable {</span>
 <span class="lineNum">      37 </span>            :         NonCopyable( NonCopyable const&amp; )              = delete;
 <span class="lineNum">      38 </span>            :         NonCopyable( NonCopyable &amp;&amp; )                  = delete;
 <span class="lineNum">      39 </span>            :         NonCopyable&amp; operator = ( NonCopyable const&amp; ) = delete;
@@ -109,10 +109,10 @@
 <span class="lineNum">      47 </span>            :     struct SourceLineInfo {
 <a name="48"><span class="lineNum">      48 </span>            : </a>
 <span class="lineNum">      49 </span>            :         SourceLineInfo() = delete;
-<span class="lineNum">      50 </span><span class="lineCov">       1134 :         SourceLineInfo( char const* _file, std::size_t _line ) noexcept</span>
-<span class="lineNum">      51 </span><span class="lineCov">       1134 :         :   file( _file ),</span>
-<span class="lineNum">      52 </span><span class="lineCov">       1134 :             line( _line )</span>
-<span class="lineNum">      53 </span><span class="lineCov">       1134 :         {}</span>
+<span class="lineNum">      50 </span><span class="lineCov">       9732 :         SourceLineInfo( char const* _file, std::size_t _line ) noexcept</span>
+<span class="lineNum">      51 </span><span class="lineCov">       9732 :         :   file( _file ),</span>
+<span class="lineNum">      52 </span><span class="lineCov">       9732 :             line( _line )</span>
+<span class="lineNum">      53 </span><span class="lineCov">       9732 :         {}</span>
 <span class="lineNum">      54 </span>            : 
 <span class="lineNum">      55 </span>            :         SourceLineInfo( SourceLineInfo const&amp; other )            = default;
 <span class="lineNum">      56 </span>            :         SourceLineInfo&amp; operator = ( SourceLineInfo const&amp; )     = default;

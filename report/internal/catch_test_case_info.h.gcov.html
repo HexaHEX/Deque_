@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -86,7 +86,7 @@
 <span class="lineNum">      24 </span>            : 
 <a name="25"><span class="lineNum">      25 </span>            :     struct ITestInvoker;</a>
 <span class="lineNum">      26 </span>            : 
-<span class="lineNum">      27 </span><span class="lineCov">        135 :     struct TestCaseInfo {</span>
+<span class="lineNum">      27 </span><span class="lineCov">       1080 :     struct TestCaseInfo {</span>
 <span class="lineNum">      28 </span>            :         enum SpecialProperties{
 <span class="lineNum">      29 </span>            :             None = 0,
 <span class="lineNum">      30 </span>            :             IsHidden = 1 &lt;&lt; 1,
@@ -121,7 +121,7 @@
 <span class="lineNum">      59 </span>            :         SpecialProperties properties;
 <a name="60"><span class="lineNum">      60 </span>            :     };</a>
 <span class="lineNum">      61 </span>            : 
-<span class="lineNum">      62 </span><span class="lineCov">         81 :     class TestCase : public TestCaseInfo {</span>
+<span class="lineNum">      62 </span><span class="lineCov">        648 :     class TestCase : public TestCaseInfo {</span>
 <span class="lineNum">      63 </span>            :     public:
 <span class="lineNum">      64 </span>            : 
 <span class="lineNum">      65 </span>            :         TestCase( ITestInvoker* testCase, TestCaseInfo&amp;&amp; info );

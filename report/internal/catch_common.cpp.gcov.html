@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -77,8 +77,8 @@
 <span class="lineNum">      15 </span>            : 
 <a name="16"><span class="lineNum">      16 </span>            : namespace Catch {</a>
 <span class="lineNum">      17 </span>            : 
-<span class="lineNum">      18 </span><span class="lineCov">       1707 :     bool SourceLineInfo::operator == ( SourceLineInfo const&amp; other ) const noexcept {</span>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">       1707 :         return line == other.line &amp;&amp; (file == other.file || std::strcmp(file, other.file) == 0);</span></a>
+<span class="lineNum">      18 </span><span class="lineCov">      18651 :     bool SourceLineInfo::operator == ( SourceLineInfo const&amp; other ) const noexcept {</span>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">      18651 :         return line == other.line &amp;&amp; (file == other.file || std::strcmp(file, other.file) == 0);</span></a>
 <span class="lineNum">      20 </span>            :     }
 <span class="lineNum">      21 </span><span class="lineNoCov">          0 :     bool SourceLineInfo::operator &lt; ( SourceLineInfo const&amp; other ) const noexcept {</span>
 <span class="lineNum">      22 </span>            :         // We can assume that the same file will usually have the same pointer.

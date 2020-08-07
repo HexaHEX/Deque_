@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -359,7 +359,7 @@
 <span class="lineNum">     297 </span>            :       }
 <a name="298"><span class="lineNum">     298 </span>            : </a>
 <span class="lineNum">     299 </span>            :       static _GLIBCXX17_CONSTEXPR int
-<span class="lineNum">     300 </span><span class="lineCov">        546 :       compare(const char_type* __s1, const char_type* __s2, size_t __n)</span>
+<span class="lineNum">     300 </span><span class="lineCov">       4998 :       compare(const char_type* __s1, const char_type* __s2, size_t __n)</span>
 <span class="lineNum">     301 </span>            :       {
 <span class="lineNum">     302 </span>            : #if __cplusplus &gt; 201402
 <span class="lineNum">     303 </span>            :         if (__builtin_constant_p(__n)
@@ -367,9 +367,9 @@
 <span class="lineNum">     305 </span>            :             &amp;&amp; __constant_char_array_p(__s2, __n))
 <span class="lineNum">     306 </span>            :           return __gnu_cxx::char_traits&lt;char_type&gt;::compare(__s1, __s2, __n);
 <span class="lineNum">     307 </span>            : #endif
-<span class="lineNum">     308 </span><span class="lineCov">        546 :         if (__n == 0)</span>
+<span class="lineNum">     308 </span><span class="lineCov">       4998 :         if (__n == 0)</span>
 <span class="lineNum">     309 </span><span class="lineNoCov">          0 :           return 0;</span>
-<span class="lineNum">     310 </span><span class="lineCov">        546 :         return __builtin_memcmp(__s1, __s2, __n);</span>
+<span class="lineNum">     310 </span><span class="lineCov">       4998 :         return __builtin_memcmp(__s1, __s2, __n);</span>
 <span class="lineNum">     311 </span>            :       }
 <a name="312"><span class="lineNum">     312 </span>            : </a>
 <span class="lineNum">     313 </span>            :       static _GLIBCXX17_CONSTEXPR size_t

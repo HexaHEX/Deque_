@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-class DequeException : public std::exception{
+class DequeException : public std::exception
+{
 public:
     DequeException(unsigned int code = 0, std::string msg = "");
     ~DequeException();

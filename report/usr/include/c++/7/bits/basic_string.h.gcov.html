@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -6076,11 +6076,11 @@
 <span class="lineNum">    6014 </span>            :   template&lt;typename _CharT&gt;
 <a name="6015"><span class="lineNum">    6015 </span>            :     inline</a>
 <span class="lineNum">    6016 </span>            :     typename __gnu_cxx::__enable_if&lt;__is_char&lt;_CharT&gt;::__value, bool&gt;::__type
-<span class="lineNum">    6017 </span><span class="lineCov">        546 :     operator==(const basic_string&lt;_CharT&gt;&amp; __lhs,</span>
+<span class="lineNum">    6017 </span><span class="lineCov">       4998 :     operator==(const basic_string&lt;_CharT&gt;&amp; __lhs,</span>
 <span class="lineNum">    6018 </span>            :                const basic_string&lt;_CharT&gt;&amp; __rhs) _GLIBCXX_NOEXCEPT
-<span class="lineNum">    6019 </span><span class="lineCov">        546 :     { return (__lhs.size() == __rhs.size()</span>
-<span class="lineNum">    6020 </span><span class="lineCov">        546 :               &amp;&amp; !std::char_traits&lt;_CharT&gt;::compare(__lhs.data(), __rhs.data(),</span>
-<span class="lineNum">    6021 </span><span class="lineCov">        546 :                                                     __lhs.size())); }</span>
+<span class="lineNum">    6019 </span><span class="lineCov">       4998 :     { return (__lhs.size() == __rhs.size()</span>
+<span class="lineNum">    6020 </span><span class="lineCov">       4998 :               &amp;&amp; !std::char_traits&lt;_CharT&gt;::compare(__lhs.data(), __rhs.data(),</span>
+<span class="lineNum">    6021 </span><span class="lineCov">       4998 :                                                     __lhs.size())); }</span>
 <span class="lineNum">    6022 </span>            : 
 <span class="lineNum">    6023 </span>            :   /**
 <span class="lineNum">    6024 </span>            :    *  @brief  Test equivalence of C string and string.
@@ -6102,9 +6102,9 @@
 <span class="lineNum">    6040 </span>            :    */
 <a name="6041"><span class="lineNum">    6041 </span>            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <span class="lineNum">    6042 </span>            :     inline bool
-<span class="lineNum">    6043 </span><span class="lineCov">        165 :     operator==(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
+<span class="lineNum">    6043 </span><span class="lineCov">       1320 :     operator==(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
 <span class="lineNum">    6044 </span>            :                const _CharT* __rhs)
-<span class="lineNum">    6045 </span><span class="lineCov">        165 :     { return __lhs.compare(__rhs) == 0; }</span>
+<span class="lineNum">    6045 </span><span class="lineCov">       1320 :     { return __lhs.compare(__rhs) == 0; }</span>
 <span class="lineNum">    6046 </span>            : 
 <span class="lineNum">    6047 </span>            :   // operator !=
 <span class="lineNum">    6048 </span>            :   /**
@@ -6153,10 +6153,10 @@
 <span class="lineNum">    6091 </span>            :    */
 <a name="6092"><span class="lineNum">    6092 </span>            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <span class="lineNum">    6093 </span>            :     inline bool
-<span class="lineNum">    6094 </span><span class="lineCov">         57 :     operator&lt;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
+<span class="lineNum">    6094 </span><span class="lineCov">        456 :     operator&lt;(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
 <span class="lineNum">    6095 </span>            :               const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __rhs)
 <span class="lineNum">    6096 </span>            :     _GLIBCXX_NOEXCEPT
-<span class="lineNum">    6097 </span><span class="lineCov">         57 :     { return __lhs.compare(__rhs) &lt; 0; }</span>
+<span class="lineNum">    6097 </span><span class="lineCov">        456 :     { return __lhs.compare(__rhs) &lt; 0; }</span>
 <span class="lineNum">    6098 </span>            : 
 <span class="lineNum">    6099 </span>            :   /**
 <span class="lineNum">    6100 </span>            :    *  @brief  Test if string precedes C string.

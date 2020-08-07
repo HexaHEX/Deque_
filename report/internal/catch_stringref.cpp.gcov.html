@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -76,9 +76,9 @@
 <span class="lineNum">      14 </span>            : #include &lt;cstdint&gt;
 <a name="15"><span class="lineNum">      15 </span>            : </a>
 <span class="lineNum">      16 </span>            : namespace Catch {
-<span class="lineNum">      17 </span><span class="lineCov">       1083 :     StringRef::StringRef( char const* rawChars ) noexcept</span>
-<span class="lineNum">      18 </span><span class="lineCov">       1083 :     : StringRef( rawChars, static_cast&lt;StringRef::size_type&gt;(std::strlen(rawChars) ) )</span>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">       1083 :     {}</span></a>
+<span class="lineNum">      17 </span><span class="lineCov">       8704 :     StringRef::StringRef( char const* rawChars ) noexcept</span>
+<span class="lineNum">      18 </span><span class="lineCov">       8704 :     : StringRef( rawChars, static_cast&lt;StringRef::size_type&gt;(std::strlen(rawChars) ) )</span>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">       8704 :     {}</span></a>
 <span class="lineNum">      20 </span>            : 
 <span class="lineNum">      21 </span><span class="lineNoCov">          0 :     auto StringRef::c_str() const -&gt; char const* {</span>
 <span class="lineNum">      22 </span><span class="lineNoCov">          0 :         CATCH_ENFORCE(isNullTerminated(), &quot;Called StringRef::c_str() on a non-null-terminated instance&quot;);</span>

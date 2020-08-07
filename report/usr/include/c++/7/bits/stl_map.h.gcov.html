@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -236,7 +236,7 @@
 <span class="lineNum">     174 </span>            : #if __cplusplus &lt; 201103L
 <a name="175"><span class="lineNum">     175 </span>            :       map() : _M_t() { }</a>
 <span class="lineNum">     176 </span>            : #else
-<span class="lineNum">     177 </span><span class="lineCov">          6 :       map() = default;</span>
+<span class="lineNum">     177 </span><span class="lineCov">         48 :       map() = default;</span>
 <span class="lineNum">     178 </span>            : #endif
 <span class="lineNum">     179 </span>            : 
 <span class="lineNum">     180 </span>            :       /**
@@ -353,7 +353,7 @@
 <span class="lineNum">     291 </span>            :        *  themselves are pointers, the pointed-to memory is not touched in any
 <a name="292"><span class="lineNum">     292 </span>            :        *  way.  Managing the pointer is the user's responsibility.</a>
 <span class="lineNum">     293 </span>            :        */
-<span class="lineNum">     294 </span><span class="lineCov">          6 :       ~map() = default;</span>
+<span class="lineNum">     294 </span><span class="lineCov">         48 :       ~map() = default;</span>
 <span class="lineNum">     295 </span>            : #endif
 <span class="lineNum">     296 </span>            : 
 <span class="lineNum">     297 </span>            :       /**
@@ -434,8 +434,8 @@
 <span class="lineNum">     372 </span>            :        *  the keys.
 <a name="373"><span class="lineNum">     373 </span>            :        */</a>
 <span class="lineNum">     374 </span>            :       const_iterator
-<span class="lineNum">     375 </span><span class="lineCov">          3 :       end() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     376 </span><span class="lineCov">          3 :       { return _M_t.end(); }</span>
+<span class="lineNum">     375 </span><span class="lineCov">         24 :       end() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     376 </span><span class="lineCov">         24 :       { return _M_t.end(); }</span>
 <span class="lineNum">     377 </span>            : 
 <span class="lineNum">     378 </span>            :       /**
 <span class="lineNum">     379 </span>            :        *  Returns a read/write reverse iterator that points to the last pair in
@@ -627,8 +627,8 @@
 <span class="lineNum">     565 </span>            :        */
 <a name="566"><span class="lineNum">     566 </span>            :       template&lt;typename... _Args&gt;</a>
 <span class="lineNum">     567 </span>            :         std::pair&lt;iterator, bool&gt;
-<span class="lineNum">     568 </span><span class="lineCov">         12 :         emplace(_Args&amp;&amp;... __args)</span>
-<span class="lineNum">     569 </span><span class="lineCov">         12 :         { return _M_t._M_emplace_unique(std::forward&lt;_Args&gt;(__args)...); }</span>
+<span class="lineNum">     568 </span><span class="lineCov">         96 :         emplace(_Args&amp;&amp;... __args)</span>
+<span class="lineNum">     569 </span><span class="lineCov">         96 :         { return _M_t._M_emplace_unique(std::forward&lt;_Args&gt;(__args)...); }</span>
 <span class="lineNum">     570 </span>            : 
 <span class="lineNum">     571 </span>            :       /**
 <span class="lineNum">     572 </span>            :        *  @brief Attempts to build and insert a std::pair into the %map.
@@ -1246,8 +1246,8 @@
 <span class="lineNum">    1184 </span>            :        */
 <a name="1185"><span class="lineNum">    1185 </span>            : </a>
 <span class="lineNum">    1186 </span>            :       const_iterator
-<span class="lineNum">    1187 </span><span class="lineCov">          3 :       find(const key_type&amp; __x) const</span>
-<span class="lineNum">    1188 </span><span class="lineCov">          3 :       { return _M_t.find(__x); }</span>
+<span class="lineNum">    1187 </span><span class="lineCov">         24 :       find(const key_type&amp; __x) const</span>
+<span class="lineNum">    1188 </span><span class="lineCov">         24 :       { return _M_t.find(__x); }</span>
 <span class="lineNum">    1189 </span>            : 
 <span class="lineNum">    1190 </span>            : #if __cplusplus &gt; 201103L
 <span class="lineNum">    1191 </span>            :       template&lt;typename _Kt&gt;

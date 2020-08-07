@@ -57,6 +57,10 @@ public:
     void LeftRemoveItem(DequeIterator);
     void InsertItem(DequeIterator, int);
 
+#ifdef BAD_ALLOC_TEST
+    static void setBadAllocTestMode( bool b = false) { badAllocTestMode = b; }
+#endif
+
 private:
     Node* _CreateNode(int);
     void _DeleteNode(Node*);
@@ -67,6 +71,7 @@ private:
     unsigned int _size;
     Node* _begin = nullptr;
     Node* _end = nullptr;
+    static bool badAllocTestMode;
 };
 
 #endif // DEQUE_H

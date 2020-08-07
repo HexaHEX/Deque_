@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -74,26 +74,26 @@
 <span class="lineNum">      12 </span>            : 
 <a name="13"><span class="lineNum">      13 </span>            : namespace Catch {</a>
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">          9 :     auto makeTestInvoker( void(*testAsFunction)() ) noexcept -&gt; ITestInvoker* {</span>
-<span class="lineNum">      16 </span><span class="lineCov">          9 :         return new(std::nothrow) TestInvokerAsFunction( testAsFunction );</span>
+<span class="lineNum">      15 </span><span class="lineCov">         72 :     auto makeTestInvoker( void(*testAsFunction)() ) noexcept -&gt; ITestInvoker* {</span>
+<span class="lineNum">      16 </span><span class="lineCov">         72 :         return new(std::nothrow) TestInvokerAsFunction( testAsFunction );</span>
 <a name="17"><span class="lineNum">      17 </span>            :     }</a>
 <span class="lineNum">      18 </span>            : 
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          9 :     NameAndTags::NameAndTags( StringRef const&amp; name_ , StringRef const&amp; tags_ ) noexcept : name( name_ ), tags( tags_ ) {}</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">         72 :     NameAndTags::NameAndTags( StringRef const&amp; name_ , StringRef const&amp; tags_ ) noexcept : name( name_ ), tags( tags_ ) {}</span></a>
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">          9 :     AutoReg::AutoReg( ITestInvoker* invoker, SourceLineInfo const&amp; lineInfo, StringRef const&amp; classOrMethod, NameAndTags const&amp; nameAndTags ) noexcept {</span>
+<span class="lineNum">      21 </span><span class="lineCov">         72 :     AutoReg::AutoReg( ITestInvoker* invoker, SourceLineInfo const&amp; lineInfo, StringRef const&amp; classOrMethod, NameAndTags const&amp; nameAndTags ) noexcept {</span>
 <span class="lineNum">      22 </span>            :         CATCH_TRY {
-<span class="lineNum">      23 </span><span class="lineCov">          9 :             getMutableRegistryHub()</span>
-<span class="lineNum">      24 </span><span class="lineCov">          9 :                     .registerTest(</span>
-<span class="lineNum">      25 </span><span class="lineCov">         18 :                         makeTestCase(</span>
+<span class="lineNum">      23 </span><span class="lineCov">         72 :             getMutableRegistryHub()</span>
+<span class="lineNum">      24 </span><span class="lineCov">         72 :                     .registerTest(</span>
+<span class="lineNum">      25 </span><span class="lineCov">        144 :                         makeTestCase(</span>
 <span class="lineNum">      26 </span>            :                             invoker,
-<span class="lineNum">      27 </span><span class="lineCov">         18 :                             extractClassName( classOrMethod ),</span>
+<span class="lineNum">      27 </span><span class="lineCov">        144 :                             extractClassName( classOrMethod ),</span>
 <span class="lineNum">      28 </span>            :                             nameAndTags,
-<span class="lineNum">      29 </span><span class="lineCov">          9 :                             lineInfo));</span>
+<span class="lineNum">      29 </span><span class="lineCov">         72 :                             lineInfo));</span>
 <span class="lineNum">      30 </span><span class="lineNoCov">          0 :         } CATCH_CATCH_ALL {</span>
 <span class="lineNum">      31 </span>            :             // Do not throw when constructing global objects, instead register the exception to be processed later
 <span class="lineNum">      32 </span><span class="lineNoCov">          0 :             getMutableRegistryHub().registerStartupException();</span>
 <span class="lineNum">      33 </span>            :         }
-<span class="lineNum">      34 </span><span class="lineCov">          9 :     }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         72 :     }</span>
 <span class="lineNum">      35 </span>            : 
 <span class="lineNum">      36 </span>            :     AutoReg::~AutoReg() = default;
 <span class="lineNum">      37 </span>            : }

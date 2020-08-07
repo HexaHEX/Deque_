@@ -1,7 +1,7 @@
 MAKEFILE      = Makefile
 
 CXX           = g++
-
+DEFINES	      = -D BAD_ALLOC_TEST
 CXXFLAGS      = -pipe -g -fprofile-arcs -ftest-coverage -O0 -std=c++11 -m64 -fPIC -pipe -g -std=gnu++11 -Wall -W -fPIC $(DEFINES)
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -1831,10 +1831,12 @@ $(OBJ_DIR)/main.o: ./main.cpp ./catch2/catch.hpp \
 
 report: $(EXECUTABLE)
 	$(EXECUTABLE)  > /dev/null
-	gcov  "report" -d Build/ -c -o "report.info"
+#	gcov -o Build *.cpp
+	lcov -t "report" -d Build/ -c -o "report.info"
 	genhtml -o report report.info
 
 clean:
 	rm -rf  $(OBJECTS) $(EXECUTABLE)
 	rm -rf  report.info
+	rm -rf  *.gcov
 

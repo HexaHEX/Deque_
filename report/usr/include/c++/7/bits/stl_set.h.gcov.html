@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">11</td>
@@ -216,7 +216,7 @@
 <span class="lineNum">     154 </span>            : #if __cplusplus &lt; 201103L
 <a name="155"><span class="lineNum">     155 </span>            :       set() : _M_t() { }</a>
 <span class="lineNum">     156 </span>            : #else
-<span class="lineNum">     157 </span><span class="lineCov">          6 :       set() = default;</span>
+<span class="lineNum">     157 </span><span class="lineCov">         48 :       set() = default;</span>
 <span class="lineNum">     158 </span>            : #endif
 <span class="lineNum">     159 </span>            : 
 <span class="lineNum">     160 </span>            :       /**
@@ -292,11 +292,11 @@
 <span class="lineNum">     230 </span>            :        *  This is linear in N if the list is already sorted, and NlogN
 <a name="231"><span class="lineNum">     231 </span>            :        *  otherwise (where N is @a __l.size()).</a>
 <span class="lineNum">     232 </span>            :        */
-<span class="lineNum">     233 </span><span class="lineCov">          3 :       set(initializer_list&lt;value_type&gt; __l,</span>
+<span class="lineNum">     233 </span><span class="lineCov">         24 :       set(initializer_list&lt;value_type&gt; __l,</span>
 <span class="lineNum">     234 </span>            :           const _Compare&amp; __comp = _Compare(),
 <span class="lineNum">     235 </span>            :           const allocator_type&amp; __a = allocator_type())
-<span class="lineNum">     236 </span><span class="lineCov">          3 :       : _M_t(__comp, _Key_alloc_type(__a))</span>
-<span class="lineNum">     237 </span><span class="lineCov">          3 :       { _M_t._M_insert_unique(__l.begin(), __l.end()); }</span>
+<span class="lineNum">     236 </span><span class="lineCov">         24 :       : _M_t(__comp, _Key_alloc_type(__a))</span>
+<span class="lineNum">     237 </span><span class="lineCov">         24 :       { _M_t._M_insert_unique(__l.begin(), __l.end()); }</span>
 <span class="lineNum">     238 </span>            : 
 <span class="lineNum">     239 </span>            :       /// Allocator-extended default constructor.
 <span class="lineNum">     240 </span>            :       explicit
@@ -330,7 +330,7 @@
 <span class="lineNum">     268 </span>            :        *  themselves are pointers, the pointed-to memory is not touched in any
 <a name="269"><span class="lineNum">     269 </span>            :        *  way. Managing the pointer is the user's responsibility.</a>
 <span class="lineNum">     270 </span>            :        */
-<span class="lineNum">     271 </span><span class="lineCov">          9 :       ~set() = default;</span>
+<span class="lineNum">     271 </span><span class="lineCov">         72 :       ~set() = default;</span>
 <span class="lineNum">     272 </span>            : #endif
 <span class="lineNum">     273 </span>            : 
 <span class="lineNum">     274 </span>            :       /**
@@ -393,8 +393,8 @@
 <span class="lineNum">     331 </span>            :        *  to the keys.
 <a name="332"><span class="lineNum">     332 </span>            :        */</a>
 <span class="lineNum">     333 </span>            :       iterator
-<span class="lineNum">     334 </span><span class="lineCov">          3 :       begin() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     335 </span><span class="lineCov">          3 :       { return _M_t.begin(); }</span>
+<span class="lineNum">     334 </span><span class="lineCov">         24 :       begin() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     335 </span><span class="lineCov">         24 :       { return _M_t.begin(); }</span>
 <span class="lineNum">     336 </span>            : 
 <span class="lineNum">     337 </span>            :       /**
 <span class="lineNum">     338 </span>            :        *  Returns a read-only (constant) iterator that points one past the last
@@ -402,8 +402,8 @@
 <span class="lineNum">     340 </span>            :        *  to the keys.
 <a name="341"><span class="lineNum">     341 </span>            :        */</a>
 <span class="lineNum">     342 </span>            :       iterator
-<span class="lineNum">     343 </span><span class="lineCov">          3 :       end() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     344 </span><span class="lineCov">          3 :       { return _M_t.end(); }</span>
+<span class="lineNum">     343 </span><span class="lineCov">         24 :       end() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     344 </span><span class="lineCov">         24 :       { return _M_t.end(); }</span>
 <span class="lineNum">     345 </span>            : 
 <span class="lineNum">     346 </span>            :       /**
 <span class="lineNum">     347 </span>            :        *  Returns a read-only (constant) iterator that points to the last
@@ -511,8 +511,8 @@
 <span class="lineNum">     449 </span>            :        */
 <a name="450"><span class="lineNum">     450 </span>            :       template&lt;typename... _Args&gt;</a>
 <span class="lineNum">     451 </span>            :         std::pair&lt;iterator, bool&gt;
-<span class="lineNum">     452 </span><span class="lineCov">          9 :         emplace(_Args&amp;&amp;... __args)</span>
-<span class="lineNum">     453 </span><span class="lineCov">          9 :         { return _M_t._M_emplace_unique(std::forward&lt;_Args&gt;(__args)...); }</span>
+<span class="lineNum">     452 </span><span class="lineCov">         72 :         emplace(_Args&amp;&amp;... __args)</span>
+<span class="lineNum">     453 </span><span class="lineCov">         72 :         { return _M_t._M_emplace_unique(std::forward&lt;_Args&gt;(__args)...); }</span>
 <span class="lineNum">     454 </span>            : 
 <span class="lineNum">     455 </span>            :       /**
 <span class="lineNum">     456 </span>            :        *  @brief Attempts to insert an element into the %set.
@@ -558,11 +558,11 @@
 <span class="lineNum">     496 </span>            :        *  Insertion requires logarithmic time.
 <a name="497"><span class="lineNum">     497 </span>            :        */</a>
 <span class="lineNum">     498 </span>            :       std::pair&lt;iterator, bool&gt;
-<span class="lineNum">     499 </span><span class="lineCov">          9 :       insert(const value_type&amp; __x)</span>
+<span class="lineNum">     499 </span><span class="lineCov">         72 :       insert(const value_type&amp; __x)</span>
 <span class="lineNum">     500 </span>            :       {
-<span class="lineNum">     501 </span><span class="lineCov">          9 :         std::pair&lt;typename _Rep_type::iterator, bool&gt; __p =</span>
+<span class="lineNum">     501 </span><span class="lineCov">         72 :         std::pair&lt;typename _Rep_type::iterator, bool&gt; __p =</span>
 <span class="lineNum">     502 </span>            :           _M_t._M_insert_unique(__x);
-<span class="lineNum">     503 </span><span class="lineCov">          9 :         return std::pair&lt;iterator, bool&gt;(__p.first, __p.second);</span>
+<span class="lineNum">     503 </span><span class="lineCov">         72 :         return std::pair&lt;iterator, bool&gt;(__p.first, __p.second);</span>
 <span class="lineNum">     504 </span>            :       }
 <span class="lineNum">     505 </span>            : 
 <span class="lineNum">     506 </span>            : #if __cplusplus &gt;= 201103L
@@ -797,8 +797,8 @@
 <span class="lineNum">     735 </span>            :        *  either be 0 (not present) or 1 (present).
 <a name="736"><span class="lineNum">     736 </span>            :        */</a>
 <span class="lineNum">     737 </span>            :       size_type
-<span class="lineNum">     738 </span><span class="lineCov">          3 :       count(const key_type&amp; __x) const</span>
-<span class="lineNum">     739 </span><span class="lineCov">          3 :       { return _M_t.find(__x) == _M_t.end() ? 0 : 1; }</span>
+<span class="lineNum">     738 </span><span class="lineCov">         24 :       count(const key_type&amp; __x) const</span>
+<span class="lineNum">     739 </span><span class="lineCov">         24 :       { return _M_t.find(__x) == _M_t.end() ? 0 : 1; }</span>
 <span class="lineNum">     740 </span>            : 
 <span class="lineNum">     741 </span>            : #if __cplusplus &gt; 201103L
 <span class="lineNum">     742 </span>            :       template&lt;typename _Kt&gt;

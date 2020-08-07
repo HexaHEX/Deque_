@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -74,26 +74,26 @@
 <span class="lineNum">      12 </span>            : 
 <a name="13"><span class="lineNum">      13 </span>            : namespace Catch {</a>
 <span class="lineNum">      14 </span>            : 
-<span class="lineNum">      15 </span><span class="lineCov">        567 :     Section::Section( SectionInfo const&amp; info )</span>
+<span class="lineNum">      15 </span><span class="lineCov">       5161 :     Section::Section( SectionInfo const&amp; info )</span>
 <span class="lineNum">      16 </span>            :     :   m_info( info ),
-<span class="lineNum">      17 </span><span class="lineCov">        567 :         m_sectionIncluded( getResultCapture().sectionStarted( m_info, m_assertions ) )</span>
+<span class="lineNum">      17 </span><span class="lineCov">       5161 :         m_sectionIncluded( getResultCapture().sectionStarted( m_info, m_assertions ) )</span>
 <span class="lineNum">      18 </span>            :     {
-<span class="lineNum">      19 </span><span class="lineCov">        567 :         m_timer.start();</span>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">        567 :     }</span></a>
+<span class="lineNum">      19 </span><span class="lineCov">       5161 :         m_timer.start();</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">       5161 :     }</span></a>
 <span class="lineNum">      21 </span>            : 
-<span class="lineNum">      22 </span><span class="lineCov">       1134 :     Section::~Section() {</span>
-<span class="lineNum">      23 </span><span class="lineCov">        567 :         if( m_sectionIncluded ) {</span>
-<span class="lineNum">      24 </span><span class="lineCov">        246 :             SectionEndInfo endInfo{ m_info, m_assertions, m_timer.getElapsedSeconds() };</span>
-<span class="lineNum">      25 </span><span class="lineCov">        123 :             if( uncaught_exceptions() )</span>
+<span class="lineNum">      22 </span><span class="lineCov">      10322 :     Section::~Section() {</span>
+<span class="lineNum">      23 </span><span class="lineCov">       5161 :         if( m_sectionIncluded ) {</span>
+<span class="lineNum">      24 </span><span class="lineCov">       2038 :             SectionEndInfo endInfo{ m_info, m_assertions, m_timer.getElapsedSeconds() };</span>
+<span class="lineNum">      25 </span><span class="lineCov">       1019 :             if( uncaught_exceptions() )</span>
 <span class="lineNum">      26 </span><span class="lineNoCov">          0 :                 getResultCapture().sectionEndedEarly( endInfo );</span>
 <span class="lineNum">      27 </span>            :             else
-<span class="lineNum">      28 </span><span class="lineCov">        123 :                 getResultCapture().sectionEnded( endInfo );</span>
+<span class="lineNum">      28 </span><span class="lineCov">       1019 :                 getResultCapture().sectionEnded( endInfo );</span>
 <span class="lineNum">      29 </span>            :         }
-<span class="lineNum">      30 </span><span class="lineCov">        567 :     }</span>
+<span class="lineNum">      30 </span><span class="lineCov">       5161 :     }</span>
 <a name="31"><span class="lineNum">      31 </span>            : </a>
 <span class="lineNum">      32 </span>            :     // This indicates whether the section should be executed or not
-<span class="lineNum">      33 </span><span class="lineCov">        567 :     Section::operator bool() const {</span>
-<span class="lineNum">      34 </span><span class="lineCov">        567 :         return m_sectionIncluded;</span>
+<span class="lineNum">      33 </span><span class="lineCov">       5161 :     Section::operator bool() const {</span>
+<span class="lineNum">      34 </span><span class="lineCov">       5161 :         return m_sectionIncluded;</span>
 <span class="lineNum">      35 </span>            :     }
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            : 

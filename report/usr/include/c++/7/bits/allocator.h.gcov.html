@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">187</td>
@@ -190,15 +190,15 @@
 <span class="lineNum">     128 </span>            :       typedef true_type is_always_equal;
 <a name="129"><span class="lineNum">     129 </span>            : #endif</a>
 <span class="lineNum">     130 </span>            : 
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        666 :       allocator() throw() { }</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       5433 :       allocator() throw() { }</span></a>
 <span class="lineNum">     132 </span>            : 
-<span class="lineNum">     133 </span><span class="lineCov">       9111 :       allocator(const allocator&amp; __a) throw()</span>
-<span class="lineNum">     134 </span><span class="lineCov">       9111 :       : __allocator_base&lt;_Tp&gt;(__a) { }</span>
+<span class="lineNum">     133 </span><span class="lineCov">      73053 :       allocator(const allocator&amp; __a) throw()</span>
+<span class="lineNum">     134 </span><span class="lineCov">      73053 :       : __allocator_base&lt;_Tp&gt;(__a) { }</span>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
 <span class="lineNum">     136 </span>            :       template&lt;typename _Tp1&gt;
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        459 :         allocator(const allocator&lt;_Tp1&gt;&amp;) throw() { }</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">       3742 :         allocator(const allocator&lt;_Tp1&gt;&amp;) throw() { }</span></a>
 <span class="lineNum">     138 </span>            : 
-<span class="lineNum">     139 </span><span class="lineCov">      10236 :       ~allocator() throw() { }</span>
+<span class="lineNum">     139 </span><span class="lineCov">      82228 :       ~allocator() throw() { }</span>
 <span class="lineNum">     140 </span>            : 
 <span class="lineNum">     141 </span>            :       // Inherit everything else.
 <span class="lineNum">     142 </span>            :     };

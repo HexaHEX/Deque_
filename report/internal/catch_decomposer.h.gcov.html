@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">42</td>
@@ -87,15 +87,15 @@
 <span class="lineNum">      25 </span>            : 
 <a name="26"><span class="lineNum">      26 </span>            : namespace Catch {</a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
-<a name="28"><span class="lineNum">      28 </span><span class="lineCov">        519 :     struct ITransientExpression {</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">       4157 :     struct ITransientExpression {</span></a>
 <span class="lineNum">      29 </span><span class="lineNoCov">          0 :         auto isBinaryExpression() const -&gt; bool { return m_isBinaryExpression; }</span>
-<span class="lineNum">      30 </span><span class="lineCov">        519 :         auto getResult() const -&gt; bool { return m_result; }</span>
+<span class="lineNum">      30 </span><span class="lineCov">       4157 :         auto getResult() const -&gt; bool { return m_result; }</span>
 <a name="31"><span class="lineNum">      31 </span>            :         virtual void streamReconstructedExpression( std::ostream &amp;os ) const = 0;</a>
 <span class="lineNum">      32 </span>            : 
-<span class="lineNum">      33 </span><span class="lineCov">        519 :         ITransientExpression( bool isBinaryExpression, bool result )</span>
-<span class="lineNum">      34 </span><span class="lineCov">        519 :         :   m_isBinaryExpression( isBinaryExpression ),</span>
-<span class="lineNum">      35 </span><span class="lineCov">        519 :             m_result( result )</span>
-<span class="lineNum">      36 </span><span class="lineCov">        519 :         {}</span>
+<span class="lineNum">      33 </span><span class="lineCov">       4157 :         ITransientExpression( bool isBinaryExpression, bool result )</span>
+<span class="lineNum">      34 </span><span class="lineCov">       4157 :         :   m_isBinaryExpression( isBinaryExpression ),</span>
+<span class="lineNum">      35 </span><span class="lineCov">       4157 :             m_result( result )</span>
+<span class="lineNum">      36 </span><span class="lineCov">       4157 :         {}</span>
 <span class="lineNum">      37 </span>            : 
 <span class="lineNum">      38 </span>            :         // We don't actually need a virtual destructor, but many static analysers
 <span class="lineNum">      39 </span>            :         // complain if it's not here :-(
@@ -109,7 +109,7 @@
 <span class="lineNum">      47 </span>            :     void formatReconstructedExpression( std::ostream &amp;os, std::string const&amp; lhs, StringRef op, std::string const&amp; rhs );
 <a name="48"><span class="lineNum">      48 </span>            : </a>
 <span class="lineNum">      49 </span>            :     template&lt;typename LhsT, typename RhsT&gt;
-<span class="lineNum">      50 </span><span class="lineCov">        519 :     class BinaryExpr  : public ITransientExpression {</span>
+<span class="lineNum">      50 </span><span class="lineCov">        870 :     class BinaryExpr  : public ITransientExpression {</span>
 <span class="lineNum">      51 </span>            :         LhsT m_lhs;
 <span class="lineNum">      52 </span>            :         StringRef m_op;
 <a name="53"><span class="lineNum">      53 </span>            :         RhsT m_rhs;</a>
@@ -120,12 +120,12 @@
 <span class="lineNum">      58 </span><span class="lineNoCov">          0 :         }</span>
 <a name="59"><span class="lineNum">      59 </span>            : </a>
 <span class="lineNum">      60 </span>            :     public:
-<span class="lineNum">      61 </span><span class="lineCov">        519 :         BinaryExpr( bool comparisonResult, LhsT lhs, StringRef op, RhsT rhs )</span>
+<span class="lineNum">      61 </span><span class="lineCov">        870 :         BinaryExpr( bool comparisonResult, LhsT lhs, StringRef op, RhsT rhs )</span>
 <span class="lineNum">      62 </span>            :         :   ITransientExpression{ true, comparisonResult },
 <span class="lineNum">      63 </span>            :             m_lhs( lhs ),
 <span class="lineNum">      64 </span>            :             m_op( op ),
-<span class="lineNum">      65 </span><span class="lineCov">        519 :             m_rhs( rhs )</span>
-<span class="lineNum">      66 </span><span class="lineCov">        519 :         {}</span>
+<span class="lineNum">      65 </span><span class="lineCov">        870 :             m_rhs( rhs )</span>
+<span class="lineNum">      66 </span><span class="lineCov">        870 :         {}</span>
 <span class="lineNum">      67 </span>            : 
 <span class="lineNum">      68 </span>            :         template&lt;typename T&gt;
 <span class="lineNum">      69 </span>            :         auto operator &amp;&amp; ( T ) const -&gt; BinaryExpr&lt;LhsT, RhsT const&amp;&gt; const {
@@ -202,7 +202,7 @@
 <span class="lineNum">     140 </span>            : 
 <a name="141"><span class="lineNum">     141 </span>            :     // Specialised comparison functions to handle equality comparisons between ints and pointers (NULL deduces as an int)</a>
 <span class="lineNum">     142 </span>            :     template&lt;typename LhsT, typename RhsT&gt;
-<span class="lineNum">     143 </span><span class="lineCov">        474 :     auto compareEqual( LhsT const&amp; lhs, RhsT const&amp; rhs ) -&gt; bool { return static_cast&lt;bool&gt;(lhs == rhs); }</span>
+<span class="lineNum">     143 </span><span class="lineCov">        795 :     auto compareEqual( LhsT const&amp; lhs, RhsT const&amp; rhs ) -&gt; bool { return static_cast&lt;bool&gt;(lhs == rhs); }</span>
 <span class="lineNum">     144 </span>            :     template&lt;typename T&gt;
 <span class="lineNum">     145 </span>            :     auto compareEqual( T* const&amp; lhs, int rhs ) -&gt; bool { return lhs == reinterpret_cast&lt;void const*&gt;( rhs ); }
 <span class="lineNum">     146 </span>            :     template&lt;typename T&gt;
@@ -213,7 +213,7 @@
 <span class="lineNum">     151 </span>            :     auto compareEqual( long lhs, T* const&amp; rhs ) -&gt; bool { return reinterpret_cast&lt;void const*&gt;( lhs ) == rhs; }
 <a name="152"><span class="lineNum">     152 </span>            : </a>
 <span class="lineNum">     153 </span>            :     template&lt;typename LhsT, typename RhsT&gt;
-<span class="lineNum">     154 </span><span class="lineCov">          3 :     auto compareNotEqual( LhsT const&amp; lhs, RhsT&amp;&amp; rhs ) -&gt; bool { return static_cast&lt;bool&gt;(lhs != rhs); }</span>
+<span class="lineNum">     154 </span><span class="lineCov">          5 :     auto compareNotEqual( LhsT const&amp; lhs, RhsT&amp;&amp; rhs ) -&gt; bool { return static_cast&lt;bool&gt;(lhs != rhs); }</span>
 <span class="lineNum">     155 </span>            :     template&lt;typename T&gt;
 <span class="lineNum">     156 </span>            :     auto compareNotEqual( T* const&amp; lhs, int rhs ) -&gt; bool { return lhs != reinterpret_cast&lt;void const*&gt;( rhs ); }
 <span class="lineNum">     157 </span>            :     template&lt;typename T&gt;
@@ -228,19 +228,19 @@
 <span class="lineNum">     166 </span>            :     class ExprLhs {
 <a name="167"><span class="lineNum">     167 </span>            :         LhsT m_lhs;</a>
 <span class="lineNum">     168 </span>            :     public:
-<span class="lineNum">     169 </span><span class="lineCov">        519 :         explicit ExprLhs( LhsT lhs ) : m_lhs( lhs ) {}</span>
+<span class="lineNum">     169 </span><span class="lineCov">        870 :         explicit ExprLhs( LhsT lhs ) : m_lhs( lhs ) {}</span>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <span class="lineNum">     171 </span>            :         template&lt;typename RhsT&gt;
-<span class="lineNum">     172 </span><span class="lineCov">        474 :         auto operator == ( RhsT const&amp; rhs ) -&gt; BinaryExpr&lt;LhsT, RhsT const&amp;&gt; const {</span>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        474 :             return { compareEqual( m_lhs, rhs ), m_lhs, &quot;==&quot;, rhs };</span></a>
+<span class="lineNum">     172 </span><span class="lineCov">        795 :         auto operator == ( RhsT const&amp; rhs ) -&gt; BinaryExpr&lt;LhsT, RhsT const&amp;&gt; const {</span>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">        795 :             return { compareEqual( m_lhs, rhs ), m_lhs, &quot;==&quot;, rhs };</span></a>
 <span class="lineNum">     174 </span>            :         }
-<span class="lineNum">     175 </span><span class="lineCov">         42 :         auto operator == ( bool rhs ) -&gt; BinaryExpr&lt;LhsT, bool&gt; const {</span>
-<span class="lineNum">     176 </span><span class="lineCov">         42 :             return { m_lhs == rhs, m_lhs, &quot;==&quot;, rhs };</span>
+<span class="lineNum">     175 </span><span class="lineCov">         70 :         auto operator == ( bool rhs ) -&gt; BinaryExpr&lt;LhsT, bool&gt; const {</span>
+<span class="lineNum">     176 </span><span class="lineCov">         70 :             return { m_lhs == rhs, m_lhs, &quot;==&quot;, rhs };</span>
 <span class="lineNum">     177 </span>            :         }
 <a name="178"><span class="lineNum">     178 </span>            : </a>
 <span class="lineNum">     179 </span>            :         template&lt;typename RhsT&gt;
-<span class="lineNum">     180 </span><span class="lineCov">          3 :         auto operator != ( RhsT const&amp; rhs ) -&gt; BinaryExpr&lt;LhsT, RhsT const&amp;&gt; const {</span>
-<span class="lineNum">     181 </span><span class="lineCov">          3 :             return { compareNotEqual( m_lhs, rhs ), m_lhs, &quot;!=&quot;, rhs };</span>
+<span class="lineNum">     180 </span><span class="lineCov">          5 :         auto operator != ( RhsT const&amp; rhs ) -&gt; BinaryExpr&lt;LhsT, RhsT const&amp;&gt; const {</span>
+<span class="lineNum">     181 </span><span class="lineCov">          5 :             return { compareNotEqual( m_lhs, rhs ), m_lhs, &quot;!=&quot;, rhs };</span>
 <span class="lineNum">     182 </span>            :         }
 <span class="lineNum">     183 </span>            :         auto operator != ( bool rhs ) -&gt; BinaryExpr&lt;LhsT, bool&gt; const {
 <span class="lineNum">     184 </span>            :             return { m_lhs != rhs, m_lhs, &quot;!=&quot;, rhs };
@@ -303,12 +303,12 @@
 <span class="lineNum">     241 </span>            : 
 <a name="242"><span class="lineNum">     242 </span>            :     struct Decomposer {</a>
 <span class="lineNum">     243 </span>            :         template&lt;typename T&gt;
-<span class="lineNum">     244 </span><span class="lineCov">        477 :         auto operator &lt;= ( T const&amp; lhs ) -&gt; ExprLhs&lt;T const&amp;&gt; {</span>
-<span class="lineNum">     245 </span><span class="lineCov">        477 :             return ExprLhs&lt;T const&amp;&gt;{ lhs };</span>
+<span class="lineNum">     244 </span><span class="lineCov">        800 :         auto operator &lt;= ( T const&amp; lhs ) -&gt; ExprLhs&lt;T const&amp;&gt; {</span>
+<span class="lineNum">     245 </span><span class="lineCov">        800 :             return ExprLhs&lt;T const&amp;&gt;{ lhs };</span>
 <a name="246"><span class="lineNum">     246 </span>            :         }</a>
 <span class="lineNum">     247 </span>            : 
-<span class="lineNum">     248 </span><span class="lineCov">         42 :         auto operator &lt;=( bool value ) -&gt; ExprLhs&lt;bool&gt; {</span>
-<span class="lineNum">     249 </span><span class="lineCov">         42 :             return ExprLhs&lt;bool&gt;{ value };</span>
+<span class="lineNum">     248 </span><span class="lineCov">         70 :         auto operator &lt;=( bool value ) -&gt; ExprLhs&lt;bool&gt; {</span>
+<span class="lineNum">     249 </span><span class="lineCov">         70 :             return ExprLhs&lt;bool&gt;{ value };</span>
 <span class="lineNum">     250 </span>            :         }
 <span class="lineNum">     251 </span>            :     };
 <span class="lineNum">     252 </span>            : 

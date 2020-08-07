@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -206,10 +206,10 @@
 <span class="lineNum">     144 </span>            :       {
 <a name="145"><span class="lineNum">     145 </span>            :         template&lt;typename _Rep, typename _Period&gt;</a>
 <span class="lineNum">     146 </span>            :           static constexpr _ToDur
-<span class="lineNum">     147 </span><span class="lineCov">        840 :           __cast(const duration&lt;_Rep, _Period&gt;&amp; __d)</span>
+<span class="lineNum">     147 </span><span class="lineCov">       7450 :           __cast(const duration&lt;_Rep, _Period&gt;&amp; __d)</span>
 <span class="lineNum">     148 </span>            :           {
 <span class="lineNum">     149 </span>            :             typedef typename _ToDur::rep                        __to_rep;
-<span class="lineNum">     150 </span><span class="lineCov">        840 :             return _ToDur(static_cast&lt;__to_rep&gt;(__d.count()));</span>
+<span class="lineNum">     150 </span><span class="lineCov">       7450 :             return _ToDur(static_cast&lt;__to_rep&gt;(__d.count()));</span>
 <span class="lineNum">     151 </span>            :           }
 <span class="lineNum">     152 </span>            :       };
 <span class="lineNum">     153 </span>            : 
@@ -253,7 +253,7 @@
 <span class="lineNum">     191 </span>            :     template&lt;typename _ToDur, typename _Rep, typename _Period&gt;
 <a name="192"><span class="lineNum">     192 </span>            :       constexpr typename enable_if&lt;__is_duration&lt;_ToDur&gt;::value,</a>
 <span class="lineNum">     193 </span>            :                                    _ToDur&gt;::type
-<span class="lineNum">     194 </span><span class="lineCov">        840 :       duration_cast(const duration&lt;_Rep, _Period&gt;&amp; __d)</span>
+<span class="lineNum">     194 </span><span class="lineCov">       7450 :       duration_cast(const duration&lt;_Rep, _Period&gt;&amp; __d)</span>
 <span class="lineNum">     195 </span>            :       {
 <span class="lineNum">     196 </span>            :         typedef typename _ToDur::period                         __to_period;
 <span class="lineNum">     197 </span>            :         typedef typename _ToDur::rep                            __to_rep;
@@ -262,7 +262,7 @@
 <span class="lineNum">     200 </span>            :                                                                 __cr;
 <span class="lineNum">     201 </span>            :         typedef  __duration_cast_impl&lt;_ToDur, __cf, __cr,
 <span class="lineNum">     202 </span>            :                                       __cf::num == 1, __cf::den == 1&gt; __dc;
-<span class="lineNum">     203 </span><span class="lineCov">        840 :         return __dc::__cast(__d);</span>
+<span class="lineNum">     203 </span><span class="lineCov">       7450 :         return __dc::__cast(__d);</span>
 <span class="lineNum">     204 </span>            :       }
 <span class="lineNum">     205 </span>            : 
 <span class="lineNum">     206 </span>            :     /// treat_as_floating_point
@@ -386,8 +386,8 @@
 <span class="lineNum">     324 </span>            :                enable_if&lt;is_convertible&lt;const _Rep2&amp;, rep&gt;::value
 <a name="325"><span class="lineNum">     325 </span>            :                          &amp;&amp; (treat_as_floating_point&lt;rep&gt;::value</a>
 <span class="lineNum">     326 </span>            :                              || !treat_as_floating_point&lt;_Rep2&gt;::value)&gt;::type&gt;
-<span class="lineNum">     327 </span><span class="lineCov">        840 :           constexpr explicit duration(const _Rep2&amp; __rep)</span>
-<span class="lineNum">     328 </span><span class="lineCov">        840 :           : __r(static_cast&lt;rep&gt;(__rep)) { }</span>
+<span class="lineNum">     327 </span><span class="lineCov">       7450 :           constexpr explicit duration(const _Rep2&amp; __rep)</span>
+<span class="lineNum">     328 </span><span class="lineCov">       7450 :           : __r(static_cast&lt;rep&gt;(__rep)) { }</span>
 <span class="lineNum">     329 </span>            : 
 <span class="lineNum">     330 </span>            :         template&lt;typename _Rep2, typename _Period2, typename = typename
 <span class="lineNum">     331 </span>            :                enable_if&lt;treat_as_floating_point&lt;rep&gt;::value
@@ -401,8 +401,8 @@
 <span class="lineNum">     339 </span>            : 
 <a name="340"><span class="lineNum">     340 </span>            :         // 20.11.5.2 observer</a>
 <span class="lineNum">     341 </span>            :         constexpr rep
-<span class="lineNum">     342 </span><span class="lineCov">       1680 :         count() const</span>
-<span class="lineNum">     343 </span><span class="lineCov">       1680 :         { return __r; }</span>
+<span class="lineNum">     342 </span><span class="lineCov">      14900 :         count() const</span>
+<span class="lineNum">     343 </span><span class="lineCov">      14900 :         { return __r; }</span>
 <span class="lineNum">     344 </span>            : 
 <span class="lineNum">     345 </span>            :         // 20.11.5.3 arithmetic
 <span class="lineNum">     346 </span>            :         constexpr duration
@@ -698,8 +698,8 @@
 <span class="lineNum">     636 </span>            : 
 <a name="637"><span class="lineNum">     637 </span>            :         // observer</a>
 <span class="lineNum">     638 </span>            :         constexpr duration
-<span class="lineNum">     639 </span><span class="lineCov">        840 :         time_since_epoch() const</span>
-<span class="lineNum">     640 </span><span class="lineCov">        840 :         { return __d; }</span>
+<span class="lineNum">     639 </span><span class="lineCov">       7450 :         time_since_epoch() const</span>
+<span class="lineNum">     640 </span><span class="lineCov">       7450 :         { return __d; }</span>
 <span class="lineNum">     641 </span>            : 
 <span class="lineNum">     642 </span>            :         // arithmetic
 <span class="lineNum">     643 </span>            :         _GLIBCXX17_CONSTEXPR time_point&amp;

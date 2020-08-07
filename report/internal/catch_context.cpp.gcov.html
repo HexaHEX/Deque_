@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -73,32 +73,32 @@
 <span class="lineNum">      11 </span>            : 
 <a name="12"><span class="lineNum">      12 </span>            : namespace Catch {</a>
 <span class="lineNum">      13 </span>            : 
-<span class="lineNum">      14 </span><span class="lineCov">          9 :     class Context : public IMutableContext, NonCopyable {</span>
+<span class="lineNum">      14 </span><span class="lineCov">         72 :     class Context : public IMutableContext, NonCopyable {</span>
 <a name="15"><span class="lineNum">      15 </span>            : </a>
 <span class="lineNum">      16 </span>            :     public: // IContext
-<span class="lineNum">      17 </span><span class="lineCov">       1236 :         IResultCapture* getResultCapture() override {</span>
-<a name="18"><span class="lineNum">      18 </span><span class="lineCov">       1236 :             return m_resultCapture;</span></a>
+<span class="lineNum">      17 </span><span class="lineCov">      10583 :         IResultCapture* getResultCapture() override {</span>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">      10583 :             return m_resultCapture;</span></a>
 <span class="lineNum">      19 </span>            :         }
 <span class="lineNum">      20 </span><span class="lineNoCov">          0 :         IRunner* getRunner() override {</span>
 <span class="lineNum">      21 </span><span class="lineNoCov">          0 :             return m_runner;</span>
 <a name="22"><span class="lineNum">      22 </span>            :         }</a>
 <span class="lineNum">      23 </span>            : 
-<span class="lineNum">      24 </span><span class="lineCov">         30 :         IConfigPtr const&amp; getConfig() const override {</span>
-<span class="lineNum">      25 </span><span class="lineCov">         30 :             return m_config;</span>
+<span class="lineNum">      24 </span><span class="lineCov">        286 :         IConfigPtr const&amp; getConfig() const override {</span>
+<span class="lineNum">      25 </span><span class="lineCov">        286 :             return m_config;</span>
 <span class="lineNum">      26 </span>            :         }
 <span class="lineNum">      27 </span>            : 
 <span class="lineNum">      28 </span>            :         ~Context() override;
 <a name="29"><span class="lineNum">      29 </span>            : </a>
 <span class="lineNum">      30 </span>            :     public: // IMutableContext
-<span class="lineNum">      31 </span><span class="lineCov">          3 :         void setResultCapture( IResultCapture* resultCapture ) override {</span>
-<a name="32"><span class="lineNum">      32 </span><span class="lineCov">          3 :             m_resultCapture = resultCapture;</span></a>
-<span class="lineNum">      33 </span><span class="lineCov">          3 :         }</span>
-<span class="lineNum">      34 </span><span class="lineCov">          3 :         void setRunner( IRunner* runner ) override {</span>
-<a name="35"><span class="lineNum">      35 </span><span class="lineCov">          3 :             m_runner = runner;</span></a>
-<span class="lineNum">      36 </span><span class="lineCov">          3 :         }</span>
-<span class="lineNum">      37 </span><span class="lineCov">          6 :         void setConfig( IConfigPtr const&amp; config ) override {</span>
-<span class="lineNum">      38 </span><span class="lineCov">          6 :             m_config = config;</span>
-<span class="lineNum">      39 </span><span class="lineCov">          6 :         }</span>
+<span class="lineNum">      31 </span><span class="lineCov">         24 :         void setResultCapture( IResultCapture* resultCapture ) override {</span>
+<a name="32"><span class="lineNum">      32 </span><span class="lineCov">         24 :             m_resultCapture = resultCapture;</span></a>
+<span class="lineNum">      33 </span><span class="lineCov">         24 :         }</span>
+<span class="lineNum">      34 </span><span class="lineCov">         24 :         void setRunner( IRunner* runner ) override {</span>
+<a name="35"><span class="lineNum">      35 </span><span class="lineCov">         24 :             m_runner = runner;</span></a>
+<span class="lineNum">      36 </span><span class="lineCov">         24 :         }</span>
+<span class="lineNum">      37 </span><span class="lineCov">         48 :         void setConfig( IConfigPtr const&amp; config ) override {</span>
+<span class="lineNum">      38 </span><span class="lineCov">         48 :             m_config = config;</span>
+<span class="lineNum">      39 </span><span class="lineCov">         48 :         }</span>
 <span class="lineNum">      40 </span>            : 
 <span class="lineNum">      41 </span>            :         friend IMutableContext&amp; getCurrentMutableContext();
 <span class="lineNum">      42 </span>            : 
@@ -110,15 +110,15 @@
 <span class="lineNum">      48 </span>            : 
 <a name="49"><span class="lineNum">      49 </span>            :     IMutableContext *IMutableContext::currentContext = nullptr;</a>
 <span class="lineNum">      50 </span>            : 
-<span class="lineNum">      51 </span><span class="lineCov">          3 :     void IMutableContext::createContext()</span>
+<span class="lineNum">      51 </span><span class="lineCov">         24 :     void IMutableContext::createContext()</span>
 <span class="lineNum">      52 </span>            :     {
-<span class="lineNum">      53 </span><span class="lineCov">          3 :         currentContext = new Context();</span>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">          3 :     }</span></a>
+<span class="lineNum">      53 </span><span class="lineCov">         24 :         currentContext = new Context();</span>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">         24 :     }</span></a>
 <span class="lineNum">      55 </span>            : 
-<span class="lineNum">      56 </span><span class="lineCov">          6 :     void cleanUpContext() {</span>
-<span class="lineNum">      57 </span><span class="lineCov">          6 :         delete IMutableContext::currentContext;</span>
-<span class="lineNum">      58 </span><span class="lineCov">          6 :         IMutableContext::currentContext = nullptr;</span>
-<span class="lineNum">      59 </span><span class="lineCov">          6 :     }</span>
+<span class="lineNum">      56 </span><span class="lineCov">         48 :     void cleanUpContext() {</span>
+<span class="lineNum">      57 </span><span class="lineCov">         48 :         delete IMutableContext::currentContext;</span>
+<span class="lineNum">      58 </span><span class="lineCov">         48 :         IMutableContext::currentContext = nullptr;</span>
+<span class="lineNum">      59 </span><span class="lineCov">         48 :     }</span>
 <span class="lineNum">      60 </span>            :     IContext::~IContext() = default;
 <span class="lineNum">      61 </span>            :     IMutableContext::~IMutableContext() = default;
 <span class="lineNum">      62 </span>            :     Context::~Context() = default;

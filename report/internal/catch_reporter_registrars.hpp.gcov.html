@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">13</td>
@@ -78,10 +78,10 @@
 <span class="lineNum">      16 </span>            :     template&lt;typename T&gt;
 <a name="17"><span class="lineNum">      17 </span>            :     class ReporterRegistrar {</a>
 <span class="lineNum">      18 </span>            : 
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">         24 :         class ReporterFactory : public IReporterFactory {</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">        192 :         class ReporterFactory : public IReporterFactory {</span></a>
 <span class="lineNum">      20 </span>            : 
-<span class="lineNum">      21 </span><span class="lineCov">          3 :             IStreamingReporterPtr create( ReporterConfig const&amp; config ) const override {</span>
-<span class="lineNum">      22 </span><span class="lineCov">          3 :                 return std::unique_ptr&lt;T&gt;( new T( config ) );</span>
+<span class="lineNum">      21 </span><span class="lineCov">         24 :             IStreamingReporterPtr create( ReporterConfig const&amp; config ) const override {</span>
+<span class="lineNum">      22 </span><span class="lineCov">         24 :                 return std::unique_ptr&lt;T&gt;( new T( config ) );</span>
 <a name="23"><span class="lineNum">      23 </span>            :             }</a>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span><span class="lineNoCov">          0 :             std::string getDescription() const override {</span>
@@ -91,9 +91,9 @@
 <span class="lineNum">      29 </span>            : 
 <a name="30"><span class="lineNum">      30 </span>            :     public:</a>
 <span class="lineNum">      31 </span>            : 
-<span class="lineNum">      32 </span><span class="lineCov">         12 :         explicit ReporterRegistrar( std::string const&amp; name ) {</span>
-<span class="lineNum">      33 </span><span class="lineCov">         12 :             getMutableRegistryHub().registerReporter( name, std::make_shared&lt;ReporterFactory&gt;() );</span>
-<span class="lineNum">      34 </span><span class="lineCov">         12 :         }</span>
+<span class="lineNum">      32 </span><span class="lineCov">         96 :         explicit ReporterRegistrar( std::string const&amp; name ) {</span>
+<span class="lineNum">      33 </span><span class="lineCov">         96 :             getMutableRegistryHub().registerReporter( name, std::make_shared&lt;ReporterFactory&gt;() );</span>
+<span class="lineNum">      34 </span><span class="lineCov">         96 :         }</span>
 <span class="lineNum">      35 </span>            :     };
 <span class="lineNum">      36 </span>            : 
 <span class="lineNum">      37 </span>            :     template&lt;typename T&gt;

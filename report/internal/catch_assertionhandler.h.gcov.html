@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -98,7 +98,7 @@
 <span class="lineNum">      36 </span>            :         friend auto operator &lt;&lt; ( std::ostream&amp; os, LazyExpression const&amp; lazyExpr ) -&gt; std::ostream&amp;;
 <a name="37"><span class="lineNum">      37 </span>            :     };</a>
 <span class="lineNum">      38 </span>            : 
-<span class="lineNum">      39 </span><span class="lineCov">        546 :     struct AssertionReaction {</span>
+<span class="lineNum">      39 </span><span class="lineCov">       4403 :     struct AssertionReaction {</span>
 <span class="lineNum">      40 </span>            :         bool shouldDebugBreak = false;
 <span class="lineNum">      41 </span>            :         bool shouldThrow = false;
 <span class="lineNum">      42 </span>            :     };
@@ -115,11 +115,11 @@
 <span class="lineNum">      53 </span>            :                 SourceLineInfo const&amp; lineInfo,
 <a name="54"><span class="lineNum">      54 </span>            :                 StringRef capturedExpression,</a>
 <span class="lineNum">      55 </span>            :                 ResultDisposition::Flags resultDisposition );
-<span class="lineNum">      56 </span><span class="lineCov">       1092 :         ~AssertionHandler() {</span>
-<span class="lineNum">      57 </span><span class="lineCov">        546 :             if ( !m_completed ) {</span>
+<span class="lineNum">      56 </span><span class="lineCov">       1890 :         ~AssertionHandler() {</span>
+<span class="lineNum">      57 </span><span class="lineCov">        945 :             if ( !m_completed ) {</span>
 <span class="lineNum">      58 </span><span class="lineNoCov">          0 :                 m_resultCapture.handleIncomplete( m_assertionInfo );</span>
 <span class="lineNum">      59 </span>            :             }
-<span class="lineNum">      60 </span><span class="lineCov">        546 :         }</span>
+<span class="lineNum">      60 </span><span class="lineCov">        945 :         }</span>
 <span class="lineNum">      61 </span>            : 
 <span class="lineNum">      62 </span>            : 
 <span class="lineNum">      63 </span>            :         template&lt;typename T&gt;

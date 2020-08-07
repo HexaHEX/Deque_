@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-07-31 16:47:17</td>
+            <td class="headerValue">2020-08-07 14:15:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -79,16 +79,16 @@
 <span class="lineNum">      17 </span>            : namespace Catch {
 <a name="18"><span class="lineNum">      18 </span>            : </a>
 <span class="lineNum">      19 </span>            :     namespace {
-<span class="lineNum">      20 </span><span class="lineCov">         66 :         char toLowerCh(char c) {</span>
-<span class="lineNum">      21 </span><span class="lineCov">         66 :             return static_cast&lt;char&gt;( std::tolower( c ) );</span>
+<span class="lineNum">      20 </span><span class="lineCov">        528 :         char toLowerCh(char c) {</span>
+<span class="lineNum">      21 </span><span class="lineCov">        528 :             return static_cast&lt;char&gt;( std::tolower( c ) );</span>
 <span class="lineNum">      22 </span>            :         }
 <a name="23"><span class="lineNum">      23 </span>            :     }</a>
 <span class="lineNum">      24 </span>            : 
 <span class="lineNum">      25 </span><span class="lineNoCov">          0 :     bool startsWith( std::string const&amp; s, std::string const&amp; prefix ) {</span>
 <a name="26"><span class="lineNum">      26 </span><span class="lineNoCov">          0 :         return s.size() &gt;= prefix.size() &amp;&amp; std::equal(prefix.begin(), prefix.end(), s.begin());</span></a>
 <span class="lineNum">      27 </span>            :     }
-<span class="lineNum">      28 </span><span class="lineCov">         45 :     bool startsWith( std::string const&amp; s, char prefix ) {</span>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">         45 :         return !s.empty() &amp;&amp; s[0] == prefix;</span></a>
+<span class="lineNum">      28 </span><span class="lineCov">        360 :     bool startsWith( std::string const&amp; s, char prefix ) {</span>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">        360 :         return !s.empty() &amp;&amp; s[0] == prefix;</span></a>
 <span class="lineNum">      30 </span>            :     }
 <span class="lineNum">      31 </span><span class="lineNoCov">          0 :     bool endsWith( std::string const&amp; s, std::string const&amp; suffix ) {</span>
 <a name="32"><span class="lineNum">      32 </span><span class="lineNoCov">          0 :         return s.size() &gt;= suffix.size() &amp;&amp; std::equal(suffix.rbegin(), suffix.rend(), s.rbegin());</span></a>
@@ -99,20 +99,20 @@
 <span class="lineNum">      37 </span><span class="lineNoCov">          0 :     bool contains( std::string const&amp; s, std::string const&amp; infix ) {</span>
 <a name="38"><span class="lineNum">      38 </span><span class="lineNoCov">          0 :         return s.find( infix ) != std::string::npos;</span></a>
 <span class="lineNum">      39 </span>            :     }
-<span class="lineNum">      40 </span><span class="lineCov">          9 :     void toLowerInPlace( std::string&amp; s ) {</span>
-<a name="41"><span class="lineNum">      41 </span><span class="lineCov">          9 :         std::transform( s.begin(), s.end(), s.begin(), toLowerCh );</span></a>
-<span class="lineNum">      42 </span><span class="lineCov">          9 :     }</span>
-<span class="lineNum">      43 </span><span class="lineCov">          9 :     std::string toLower( std::string const&amp; s ) {</span>
-<span class="lineNum">      44 </span><span class="lineCov">          9 :         std::string lc = s;</span>
-<span class="lineNum">      45 </span><span class="lineCov">          9 :         toLowerInPlace( lc );</span>
-<a name="46"><span class="lineNum">      46 </span><span class="lineCov">          9 :         return lc;</span></a>
+<span class="lineNum">      40 </span><span class="lineCov">         72 :     void toLowerInPlace( std::string&amp; s ) {</span>
+<a name="41"><span class="lineNum">      41 </span><span class="lineCov">         72 :         std::transform( s.begin(), s.end(), s.begin(), toLowerCh );</span></a>
+<span class="lineNum">      42 </span><span class="lineCov">         72 :     }</span>
+<span class="lineNum">      43 </span><span class="lineCov">         72 :     std::string toLower( std::string const&amp; s ) {</span>
+<span class="lineNum">      44 </span><span class="lineCov">         72 :         std::string lc = s;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         72 :         toLowerInPlace( lc );</span>
+<a name="46"><span class="lineNum">      46 </span><span class="lineCov">         72 :         return lc;</span></a>
 <span class="lineNum">      47 </span>            :     }
-<span class="lineNum">      48 </span><span class="lineCov">        108 :     std::string trim( std::string const&amp; str ) {</span>
+<span class="lineNum">      48 </span><span class="lineCov">        899 :     std::string trim( std::string const&amp; str ) {</span>
 <span class="lineNum">      49 </span>            :         static char const* whitespaceChars = &quot;\n\r\t &quot;;
-<span class="lineNum">      50 </span><span class="lineCov">        108 :         std::string::size_type start = str.find_first_not_of( whitespaceChars );</span>
-<span class="lineNum">      51 </span><span class="lineCov">        108 :         std::string::size_type end = str.find_last_not_of( whitespaceChars );</span>
+<span class="lineNum">      50 </span><span class="lineCov">        899 :         std::string::size_type start = str.find_first_not_of( whitespaceChars );</span>
+<span class="lineNum">      51 </span><span class="lineCov">        899 :         std::string::size_type end = str.find_last_not_of( whitespaceChars );</span>
 <span class="lineNum">      52 </span>            : 
-<span class="lineNum">      53 </span><span class="lineCov">        108 :         return start != std::string::npos ? str.substr( start, 1+end-start ) : std::string();</span>
+<span class="lineNum">      53 </span><span class="lineCov">        899 :         return start != std::string::npos ? str.substr( start, 1+end-start ) : std::string();</span>
 <a name="54"><span class="lineNum">      54 </span>            :     }</a>
 <a name="55"><span class="lineNum">      55 </span>            : </a>
 <span class="lineNum">      56 </span><span class="lineNoCov">          0 :     StringRef trim(StringRef ref) {</span>
@@ -156,16 +156,16 @@
 <span class="lineNum">      94 </span><span class="lineNoCov">          0 :         return subStrings;</span>
 <a name="95"><span class="lineNum">      95 </span>            :     }</a>
 <span class="lineNum">      96 </span>            : 
-<span class="lineNum">      97 </span><span class="lineCov">          6 :     pluralise::pluralise( std::size_t count, std::string const&amp; label )</span>
+<span class="lineNum">      97 </span><span class="lineCov">         48 :     pluralise::pluralise( std::size_t count, std::string const&amp; label )</span>
 <span class="lineNum">      98 </span>            :     :   m_count( count ),
-<span class="lineNum">      99 </span><span class="lineCov">          6 :         m_label( label )</span>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          6 :     {}</span></a>
+<span class="lineNum">      99 </span><span class="lineCov">         48 :         m_label( label )</span>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">         48 :     {}</span></a>
 <span class="lineNum">     101 </span>            : 
-<span class="lineNum">     102 </span><span class="lineCov">          6 :     std::ostream&amp; operator &lt;&lt; ( std::ostream&amp; os, pluralise const&amp; pluraliser ) {</span>
-<span class="lineNum">     103 </span><span class="lineCov">          6 :         os &lt;&lt; pluraliser.m_count &lt;&lt; ' ' &lt;&lt; pluraliser.m_label;</span>
-<span class="lineNum">     104 </span><span class="lineCov">          6 :         if( pluraliser.m_count != 1 )</span>
-<span class="lineNum">     105 </span><span class="lineCov">          6 :             os &lt;&lt; 's';</span>
-<span class="lineNum">     106 </span><span class="lineCov">          6 :         return os;</span>
+<span class="lineNum">     102 </span><span class="lineCov">         48 :     std::ostream&amp; operator &lt;&lt; ( std::ostream&amp; os, pluralise const&amp; pluraliser ) {</span>
+<span class="lineNum">     103 </span><span class="lineCov">         48 :         os &lt;&lt; pluraliser.m_count &lt;&lt; ' ' &lt;&lt; pluraliser.m_label;</span>
+<span class="lineNum">     104 </span><span class="lineCov">         48 :         if( pluraliser.m_count != 1 )</span>
+<span class="lineNum">     105 </span><span class="lineCov">         48 :             os &lt;&lt; 's';</span>
+<span class="lineNum">     106 </span><span class="lineCov">         48 :         return os;</span>
 <span class="lineNum">     107 </span>            :     }
 <span class="lineNum">     108 </span>            : 
 <span class="lineNum">     109 </span>            : }
