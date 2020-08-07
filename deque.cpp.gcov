@@ -1,0 +1,314 @@
+        -:    0:Source:deque.cpp
+        -:    0:Programs:11
+        -:    1:#include "deque.h"
+        -:    2:
+        -:    3:#ifdef BAD_ALLOC_TEST
+        -:    4:bool Deque::badAllocTestMode = false;
+        -:    5:#endif
+        -:    6:
+      280:    7:Deque::Deque()
+      280:    8:    : _size(0)
+        -:    9:{
+      280:   10:    _begin = this->_CreateNode(0);
+      280:   11:    if ( _begin ){
+      272:   12:        _end = this->_CreateNode(0);
+      272:   13:        if ( _end == nullptr ){
+    #####:   14:            delete _begin;
+    #####:   15:            _begin = nullptr;
+    #####:   16:            throw DequeException(1, "Can not create node.");
+        -:   17:        }
+        -:   18:    }
+        -:   19:    else{
+        8:   20:        throw DequeException(1, "Can not create node.");
+        -:   21:    }
+      272:   22:}
+        -:   23:
+      544:   24:Deque::~Deque(){
+      272:   25:    this->Clear();
+      272:   26:    this->_DeleteNode(this->_begin);
+      272:   27:    this->_DeleteNode(this->_end);
+      272:   28:}
+        -:   29:
+     2480:   30:bool Deque::Empty(){
+     2480:   31:    return this->_size == 0;
+        -:   32:}
+        -:   33:
+     2104:   34:unsigned int Deque::Length(){
+     2104:   35:    return this->_size;
+        -:   36:}
+        -:   37:
+      504:   38:void Deque::PushBack(int value){
+      504:   39:    if (this->Empty()){
+      136:   40:        this->_AddFirstNode(value);
+      128:   41:        return;
+        -:   42:    }
+        -:   43:
+      368:   44:    Node * node = this->_CreateNode(value);
+      368:   45:    if ( node == nullptr ){
+        8:   46:        throw DequeException(1, "Can not create node.");
+        -:   47:    }
+        -:   48:
+      360:   49:    Node * last = this->_end->prev;
+      360:   50:    last->next = node;
+      360:   51:    node->prev = last;
+      360:   52:    node->next = this->_end;
+      360:   53:    this->_end->prev = node;
+      360:   54:    this->_size++;
+        -:   55:
+        -:   56:}
+        -:   57:
+      336:   58:void Deque::PushFront(int value){
+      336:   59:    if (this->Empty()){
+      128:   60:        this->_AddFirstNode(value);
+      120:   61:        return;
+        -:   62:    }
+        -:   63:
+      208:   64:    Node * node = this->_CreateNode(value);
+      208:   65:    if ( node == nullptr ){
+        8:   66:        throw DequeException(1, "Can not create node.");
+        -:   67:    }
+        -:   68:
+      200:   69:    Node* front = this->_begin->next;
+      200:   70:    node->next = front;
+      200:   71:    front->prev = node;
+      200:   72:    this->_begin->next = node;
+      200:   73:    this->_size++;
+        -:   74:}
+        -:   75:
+      104:   76:int Deque::PopBack(){
+      104:   77:    if (this->Length() == 0){
+        8:   78:        throw DequeException(5, "Delete Item from Empty Deque");
+        -:   79:    }
+        -:   80:
+       96:   81:    if (this->Length() == 1){
+       48:   82:        return this->_PopLastItem();
+        -:   83:    }
+        -:   84:
+       48:   85:    Node* last = this->_end->prev;
+       48:   86:    this->_end->prev = last->prev;
+       48:   87:    this->_end->prev->next = this->_end;
+        -:   88:
+       48:   89:    int value = last->value;
+       48:   90:    this->_DeleteNode(last);
+       48:   91:    this->_size--;
+       48:   92:    return value;
+        -:   93:}
+        -:   94:
+      696:   95:int Deque::PopFront(){
+      696:   96:    if (this->Length() == 0){
+        8:   97:        throw DequeException(5, "Delete Item from Empty Deque");
+        -:   98:    }
+        -:   99:
+      688:  100:    if (this->Length() == 1){
+      200:  101:        return this->_PopLastItem();
+        -:  102:    }
+        -:  103:
+      488:  104:    Node* front = this->_begin->next ;
+      488:  105:    this->_begin->next = front->next;
+      488:  106:    front->next->prev = this->_begin;
+        -:  107:
+      488:  108:    int value = front->value;
+      488:  109:    this->_DeleteNode(front);
+      488:  110:    this->_size--;
+        -:  111:
+      488:  112:    return value;
+        -:  113:}
+        -:  114:
+      856:  115:void Deque::Clear(){
+     1432:  116:    while (this->_size != 0)
+      576:  117:        this->PopFront();
+      280:  118:}
+        -:  119:
+        -:  120:
+      600:  121:Deque::DequeIterator Deque::begin(){
+      600:  122:    if (this->Empty())
+        8:  123:        throw DequeException(13, "Empty Deque, Iterator not Exist");
+        -:  124:
+      592:  125:    DequeIterator it(this->_begin->next);
+      592:  126:    return it;
+        -:  127:}
+        -:  128:
+      928:  129:Deque::DequeIterator Deque::end(){
+      928:  130:    if (this->Empty())
+        8:  131:        throw DequeException(13, "Empty Deque, Iterator not Exist");
+        -:  132:
+      920:  133:    DequeIterator it(this->_end);
+      920:  134:    return it;
+        -:  135:}
+        -:  136:
+      104:  137:Deque::DequeIterator Deque::LeftFindItem(int value){
+      104:  138:    DequeIterator it = this->begin();
+      520:  139:    for(; it != this->end(); it++){
+      304:  140:        if (*it == value)
+       96:  141:            return it;
+        -:  142:    }
+        8:  143:    return it;
+        -:  144:}
+        -:  145:
+        -:  146:
+       48:  147:Deque::DequeIterator Deque::RightFindItem(int value){
+       48:  148:    DequeIterator it = this->end()--;
+      272:  149:    for(; it != this->begin(); it--){
+      144:  150:        if (*it == value)
+       32:  151:            return it;
+        -:  152:    }
+       16:  153:    return it;
+        -:  154:}
+        -:  155:
+       72:  156:void Deque::LeftRemoveItem(Deque::DequeIterator find){
+       72:  157:    if (find == this->begin()){
+       24:  158:        this->PopFront();
+       24:  159:        return;
+        -:  160:    }
+        -:  161:
+       48:  162:    if (find == this->end()){
+        8:  163:        return;
+        -:  164:    }
+        -:  165:
+       40:  166:    if (find == this->end()--){
+        8:  167:        this->PopBack();
+        8:  168:        return;
+        -:  169:    }
+        -:  170:
+       32:  171:    Node* prev = find._ptr->prev;
+       32:  172:    Node* next = find._ptr->next;
+       32:  173:    prev->next = next;
+       32:  174:    next->prev = prev;
+       32:  175:    this->_size--;
+       32:  176:    this->_DeleteNode(find._ptr);
+        -:  177:}
+        -:  178:
+       32:  179:void Deque::InsertItem(DequeIterator insert, int value){
+       32:  180:    if (insert == this->begin()){
+        8:  181:        this->PushFront(value);
+        8:  182:        return;
+        -:  183:    }
+        -:  184:
+       24:  185:    if (insert == this->end()--){
+        8:  186:        this->PushBack(value);
+        8:  187:        return;
+        -:  188:    }
+        -:  189:
+       16:  190:    Node* node = this->_CreateNode(value);
+       16:  191:    if ( node == nullptr ){
+        8:  192:        throw DequeException(1, "Can not create node.");
+        -:  193:    }
+        -:  194:
+        8:  195:    Node* prev = insert._ptr->prev;
+        8:  196:    Node* next = insert._ptr;
+        8:  197:    prev->next = node;
+        8:  198:    node->prev = prev;
+        8:  199:    node->next = next;
+        8:  200:    next->prev = node;
+        8:  201:    this->_size++;
+        -:  202:}
+        -:  203:
+     1408:  204:Node* Deque::_CreateNode(int value){
+        -:  205:#ifdef BAD_ALLOC_TEST
+     1408:  206:    if ( badAllocTestMode ){
+       48:  207:         return nullptr;
+        -:  208:    }    
+        -:  209:#endif
+        -:  210: 
+     1360:  211:    Node* node = new Node();
+     1360:  212:    if ( node ){
+     1360:  213:        node->value = value;
+     1360:  214:        node->next = nullptr;
+     1360:  215:        node->prev = nullptr;
+        -:  216:    }
+        -:  217:
+     1360:  218:    return node;
+        -:  219:}
+        -:  220:
+     1360:  221:void Deque::_DeleteNode(Node* node){
+     1360:  222:    if ( node ){
+     1360:  223:        node->next = nullptr;
+     1360:  224:        node->prev = nullptr;
+     1360:  225:        delete node;
+     1360:  226:        node = nullptr;
+        -:  227:    }
+     1360:  228:}
+        -:  229:
+      264:  230:void Deque::_AddFirstNode(int value){
+      264:  231:    Node * node = _CreateNode(value);
+      264:  232:    if ( node == nullptr ){
+       16:  233:        throw DequeException(1, "Can not create node.");
+        -:  234:    }
+        -:  235:
+      248:  236:    this->_begin->next = node;
+      248:  237:    node->prev = nullptr;
+      248:  238:    node->next = this->_end;
+      248:  239:    this->_end->prev = node;
+      248:  240:    this->_size++;
+      248:  241:}
+        -:  242:
+      248:  243:int Deque::_PopLastItem(){
+      248:  244:    Node* node = this->_begin->next;
+      248:  245:    this->_begin->next = nullptr;
+      248:  246:    this->_end->prev = nullptr;
+      248:  247:    this->_size = 0;
+      248:  248:    int value = node->value;
+      248:  249:    this->_DeleteNode(node);
+        -:  250:
+      248:  251:    return value;
+        -:  252:}
+        -:  253:
+        -:  254:
+        -:  255://____DequeIterator__________________
+        -:  256:
+     1512:  257:Deque::DequeIterator::DequeIterator(Node* node):
+     1512:  258:_ptr(node){
+        -:  259:
+     1512:  260:}
+        -:  261:
+     4192:  262:Deque::DequeIterator::~DequeIterator(){
+     2096:  263:    this->_ptr = nullptr;
+     2096:  264:}
+        -:  265:
+      960:  266:const int& Deque::DequeIterator::operator*() const{
+      960:  267:    if (this->_ptr->next == nullptr)
+        8:  268:        throw DequeException(31, "Empty Iterator");
+        -:  269:
+      952:  270:    return this->_ptr->value;
+        -:  271:}
+        -:  272:
+     1184:  273:bool Deque::DequeIterator::operator== (const DequeIterator& it) const{
+     1184:  274:    return this->_ptr == it._ptr;
+        -:  275:}
+        -:  276:
+      936:  277:bool Deque::DequeIterator::operator!= (const DequeIterator& it) const{
+      936:  278:    return !(*this == it);
+        -:  279:}
+        -:  280:
+      280:  281:Deque::DequeIterator& Deque::DequeIterator::operator++(){
+      280:  282:    if (this->_ptr->next == nullptr)
+        8:  283:        throw DequeException(33, "It is Last Iterator");
+        -:  284:
+      272:  285:    this->_ptr = this->_ptr->next;
+      272:  286:    return *this;
+        -:  287:}
+        -:  288:
+      304:  289:Deque::DequeIterator Deque::DequeIterator::operator++(int){
+      304:  290:    if (this->_ptr->next == nullptr)
+        8:  291:        throw DequeException(33, "It is Last Iterator");
+        -:  292:
+      296:  293:    this->_ptr = this->_ptr->next;
+      296:  294:    return *this;
+        -:  295:}
+        -:  296:
+       40:  297:Deque::DequeIterator& Deque::DequeIterator::operator--(){
+       40:  298:    if (this->_ptr->prev == nullptr)
+    #####:  299:        throw DequeException(35, "It is First Iterator");
+        -:  300:
+       40:  301:    this->_ptr = this->_ptr->prev;
+       40:  302:    return *this;
+        -:  303:}
+        -:  304:
+      296:  305:Deque::DequeIterator Deque::DequeIterator::operator--(int){
+      296:  306:    if (this->_ptr->prev == nullptr)
+       16:  307:        throw DequeException(35, "It is First Iterator");
+        -:  308:
+      280:  309:    this->_ptr = this->_ptr->prev;
+      280:  310:    return *this;
+       24:  311:}
+        -:  312:

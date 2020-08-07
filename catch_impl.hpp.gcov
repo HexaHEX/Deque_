@@ -1,0 +1,35 @@
+        -:    0:Source:catch2/internal/catch_impl.hpp
+        -:    0:Programs:11
+        -:    1:/*
+        -:    2: *  Created by Phil on 5/8/2012.
+        -:    3: *  Copyright 2012 Two Blue Cubes Ltd. All rights reserved.
+        -:    4: *
+        -:    5: *  Distributed under the Boost Software License, Version 1.0. (See accompanying
+        -:    6: *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+        -:    7: */
+        -:    8:#ifndef TWOBLUECUBES_CATCH_IMPL_HPP_INCLUDED
+        -:    9:#define TWOBLUECUBES_CATCH_IMPL_HPP_INCLUDED
+        -:   10:
+        -:   11:#ifdef __clang__
+        -:   12:#pragma clang diagnostic push
+        -:   13:#pragma clang diagnostic ignored "-Wweak-vtables"
+        -:   14:#endif
+        -:   15:
+        -:   16:// Keep these here for external reporters
+        -:   17:#include "catch_test_spec.h"
+        -:   18:#include "catch_test_case_tracker.h"
+        -:   19:
+        -:   20:#include "catch_leak_detector.h"
+        -:   21:
+        -:   22:// Cpp files will be included in the single-header file here
+        -:   23:// ~*~* CATCH_CPP_STITCH_PLACE *~*~
+        -:   24:
+        -:   25:namespace Catch {
+       31:   26:    LeakDetector leakDetector;
+        -:   27:}
+        -:   28:
+        -:   29:#ifdef __clang__
+        -:   30:#pragma clang diagnostic pop
+        -:   31:#endif
+        -:   32:
+        -:   33:#endif // TWOBLUECUBES_CATCH_IMPL_HPP_INCLUDED

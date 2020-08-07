@@ -1,0 +1,64 @@
+        -:    0:Source:catch2/internal/catch_session.h
+        -:    0:Programs:11
+        -:    1:/*
+        -:    2: *  Created by Phil on 31/10/2010.
+        -:    3: *  Copyright 2010 Two Blue Cubes Ltd. All rights reserved.
+        -:    4: *
+        -:    5: *  Distributed under the Boost Software License, Version 1.0. (See accompanying
+        -:    6: *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+        -:    7: */
+        -:    8:#ifndef TWOBLUECUBES_CATCH_RUNNER_HPP_INCLUDED
+        -:    9:#define TWOBLUECUBES_CATCH_RUNNER_HPP_INCLUDED
+        -:   10:
+        -:   11:#include "catch_commandline.h"
+        -:   12:#include "catch_config.hpp"
+        -:   13:#include "catch_text.h"
+        -:   14:
+        -:   15:#include <memory>
+        -:   16:
+        -:   17:namespace Catch {
+        -:   18:
+        -:   19:    class Session : NonCopyable {
+        -:   20:    public:
+        -:   21:
+        -:   22:        Session();
+        -:   23:        ~Session() override;
+        -:   24:
+        -:   25:        void showHelp() const;
+        -:   26:        void libIdentify();
+        -:   27:
+        -:   28:        int applyCommandLine( int argc, char const * const * argv );
+        -:   29:    #if defined(CATCH_CONFIG_WCHAR) && defined(_WIN32) && defined(UNICODE)
+        -:   30:        int applyCommandLine( int argc, wchar_t const * const * argv );
+        -:   31:    #endif
+        -:   32:
+        -:   33:        void useConfigData( ConfigData const& configData );
+        -:   34:
+        -:   35:        template<typename CharT>
+       31:   36:        int run(int argc, CharT const * const argv[]) {
+       31:   37:            if (m_startupExceptions)
+    #####:   38:                return 1;
+       31:   39:            int returnCode = applyCommandLine(argc, argv);
+       31:   40:            if (returnCode == 0)
+       31:   41:                returnCode = run();
+       31:   42:            return returnCode;
+        -:   43:        }
+        -:   44:    
+        -:   45:        int run();
+        -:   46:
+        -:   47:        clara::Parser const& cli() const;
+        -:   48:        void cli( clara::Parser const& newParser );
+        -:   49:        ConfigData& configData();
+        -:   50:        Config& config();
+        -:   51:    private:
+        -:   52:        int runInternal();
+        -:   53:
+        -:   54:        clara::Parser m_cli;
+        -:   55:        ConfigData m_configData;
+        -:   56:        std::shared_ptr<Config> m_config;
+        -:   57:        bool m_startupExceptions = false;
+        -:   58:    };
+        -:   59:
+        -:   60:} // end namespace Catch
+        -:   61:
+        -:   62:#endif // TWOBLUECUBES_CATCH_RUNNER_HPP_INCLUDED

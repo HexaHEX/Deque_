@@ -1,0 +1,32 @@
+        -:    0:Source:dequeexception.cpp
+        -:    0:Programs:11
+        -:    1:#include "dequeexception.h"
+        -:    2:
+      370:    3:DequeException::DequeException(unsigned int code, std::string msg):
+        -:    4:_code_error(code),
+      370:    5:_msg_error(msg)
+        -:    6:{
+        -:    7:
+      370:    8:}
+        -:    9:
+      370:   10:DequeException::~DequeException()
+        -:   11:{
+        -:   12:
+      370:   13:}
+        -:   14:
+       64:   15:unsigned int DequeException::GetCodeError() const
+        -:   16:{
+       64:   17:    return this->_code_error;
+        -:   18:}
+        -:   19:
+       64:   20:std::string DequeException::GetMessageError() const
+        -:   21:{
+       64:   22:    return this->_msg_error;
+        -:   23:}
+        -:   24:
+       12:   25:std::ostream &operator<<(std::ostream &os, const DequeException &dequeException)
+        -:   26:{
+       12:   27:    os << "DequeException : error code = " << dequeException.GetCodeError()
+       12:   28:       << ",  " << dequeException.GetMessageError();
+       12:   29:    return os;
+       78:   30:}

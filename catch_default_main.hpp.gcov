@@ -1,0 +1,49 @@
+        -:    0:Source:catch2/internal/catch_default_main.hpp
+        -:    0:Programs:11
+        -:    1:/*
+        -:    2: *  Created by Phil on 20/05/2011.
+        -:    3: *  Copyright 2011 Two Blue Cubes Ltd. All rights reserved.
+        -:    4: *
+        -:    5: *  Distributed under the Boost Software License, Version 1.0. (See accompanying
+        -:    6: *  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+        -:    7: */
+        -:    8:#ifndef TWOBLUECUBES_CATCH_DEFAULT_MAIN_HPP_INCLUDED
+        -:    9:#define TWOBLUECUBES_CATCH_DEFAULT_MAIN_HPP_INCLUDED
+        -:   10:
+        -:   11:#include "catch_session.h"
+        -:   12:#include "catch_platform.h"
+        -:   13:
+        -:   14:#ifndef __OBJC__
+        -:   15:
+        -:   16:#if defined(CATCH_CONFIG_WCHAR) && defined(CATCH_PLATFORM_WINDOWS) && defined(_UNICODE) && !defined(DO_NOT_USE_WMAIN)
+        -:   17:// Standard C/C++ Win32 Unicode wmain entry point
+        -:   18:extern "C" int wmain (int argc, wchar_t * argv[], wchar_t * []) {
+        -:   19:#else
+        -:   20:// Standard C/C++ main entry point
+       31:   21:int main (int argc, char * argv[]) {
+        -:   22:#endif
+        -:   23:
+       31:   24:    return Catch::Session().run( argc, argv );
+        -:   25:}
+        -:   26:
+        -:   27:#else // __OBJC__
+        -:   28:
+        -:   29:// Objective-C entry point
+        -:   30:int main (int argc, char * const argv[]) {
+        -:   31:#if !CATCH_ARC_ENABLED
+        -:   32:    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+        -:   33:#endif
+        -:   34:
+        -:   35:    Catch::registerTestMethods();
+        -:   36:    int result = Catch::Session().run( argc, (char**)argv );
+        -:   37:
+        -:   38:#if !CATCH_ARC_ENABLED
+        -:   39:    [pool drain];
+        -:   40:#endif
+        -:   41:
+        -:   42:    return result;
+        -:   43:}
+        -:   44:
+        -:   45:#endif // __OBJC__
+        -:   46:
+        -:   47:#endif // TWOBLUECUBES_CATCH_DEFAULT_MAIN_HPP_INCLUDED
