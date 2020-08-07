@@ -1835,8 +1835,4 @@ report: $(EXECUTABLE)
 #	lcov -t "report" -d Build/ -c -o "report.info"
 #	genhtml -o report report.info
 
-clean:
-	rm -rf  $(OBJECTS) $(EXECUTABLE)
-	rm -rf  report.info
-	rm -rf  *.gcov
 
